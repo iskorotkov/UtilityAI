@@ -6,7 +6,7 @@
 #include "BrainAsset.h"
 #include "UtilityAIBrainComponent.generated.h"
 
-UCLASS(ClassGroup=(UtilityAI), Abstract, meta=(BlueprintSpawnableComponent))
+UCLASS(ClassGroup=(UtilityAI), meta=(BlueprintSpawnableComponent))
 class UTILITYAI_API UUtilityAIBrainComponent : public UActorComponent
 {
 	GENERATED_BODY()
@@ -15,7 +15,7 @@ public:
 	UUtilityAIBrainComponent();
 
 	UFUNCTION(BlueprintCallable)
-	virtual void Act() const = 0;
+	virtual void Act() const;
 
 private:
 	UPROPERTY()

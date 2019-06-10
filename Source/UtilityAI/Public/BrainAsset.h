@@ -10,14 +10,14 @@
 /**
  * 
  */
-UCLASS(BlueprintType, Abstract)
+UCLASS(BlueprintType)
 class UTILITYAI_API UBrainAsset : public UPrimaryDataAsset
 {
 	GENERATED_BODY()
 
 public:
 	UFUNCTION(BlueprintCallable)
-	virtual UAction* SelectAction() const = 0;
+	virtual UAction* SelectAction() const;
 
 private:
 	UPROPERTY(EditAnywhere)

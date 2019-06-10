@@ -8,14 +8,14 @@
 /**
  * 
  */
-UCLASS(BlueprintType, Abstract)
+UCLASS(BlueprintType)
 class UTILITYAI_API UCondition : public UObject
 {
 	GENERATED_BODY()
 
 public:
 	UFUNCTION(BlueprintCallable)
-	virtual bool Evaluate() const = 0;
+	virtual bool Evaluate() const;
 
 private:
 	UPROPERTY()

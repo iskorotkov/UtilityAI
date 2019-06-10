@@ -6,3 +6,8 @@ UUtilityAIBrainComponent::UUtilityAIBrainComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 }
+
+void UUtilityAIBrainComponent::Act() const
+{
+	// TODO: implement
+}

@@ -10,17 +10,18 @@
 /**
  * 
  */
-UCLASS(BlueprintType, Abstract)
+UCLASS(BlueprintType)
 class UTILITYAI_API UAction : public UObject
 {
 	GENERATED_BODY()
 
 public:
 	UFUNCTION(BlueprintCallable)
-	virtual float Evaluate() const = 0;
+	virtual float Evaluate() const;
 
+	// TODO: pass AI agent
 	UFUNCTION(BlueprintCallable)
-	virtual void Run(/*TODO: pass AI agent*/) const = 0;
+	virtual void Run() const;
 
 	// TODO: override GetDesc()
 
