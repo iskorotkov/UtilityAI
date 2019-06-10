@@ -16,13 +16,21 @@ class UTILITYAI_API UUtilityAIStatics : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable)
-	static UAction* CreateAction(UObject* Outer, UClass* Class, TArray<UCondition*> Conditions);
+	UFUNCTION(Category="Utility AI", BlueprintPure, meta=(WorldContext="Outer"))
+	static UAction* CreateAction(UObject* Outer, TSubclassOf<UAction> Class, TArray<UCondition*> Conditions);
 
-	UFUNCTION(BlueprintCallable)
-	static UCondition* CreateCondition(UObject* Outer, UClass* Class, UExpression* Expression);
+	UFUNCTION(Category="Utility AI", BlueprintPure, meta=(WorldContext="Outer"))
+	static UCondition* CreateCondition(UObject* Outer, TSubclassOf<UCondition> Class, UExpression* Expression);
 
-	// TODO: add multiple variants of CreateExpression() method
-	UFUNCTION(BlueprintCallable)
-	static UExpression* CreateExpression(UObject* Outer, UClass* Class);
+	UFUNCTION(Category="Utility AI", BlueprintPure, meta=(WorldContext="Outer"))
+	static UExpression* CreateUnaryExpression(UObject* Outer, TSubclassOf<UExpression> Class, UExpression* Operand);
+
+	UFUNCTION(Category="Utility AI", BlueprintPure, meta=(WorldContext="Outer"))
+	static UExpression* CreateBinaryExpression(UObject* Outer, TSubclassOf<UExpression> Class, UExpression* Operand1, UExpression* Operand2);
+
+	UFUNCTION(Category="Utility AI", BlueprintPure, meta=(WorldContext="Outer"))
+	static UExpression* CreateTernaryExpression(UObject* Outer, TSubclassOf<UExpression> Class, UExpression* Operand1, UExpression* Operand2, UExpression* Operand3);
+
+	UFUNCTION(Category="Utility AI", BlueprintPure, meta=(WorldContext="Outer"))
+	static UExpression* CreateMultiExpression(UObject* Outer, TSubclassOf<UExpression> Class, TArray<UExpression*> Operands);
 };
