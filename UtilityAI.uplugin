@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.0.1",
+	"FriendlyName": "UtilityAI",
+	"Description": "",
+	"Category": "AI",
+	"CreatedBy": "Ivan Korotkov",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": false,
+	"IsBetaVersion": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "UtilityAI",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
