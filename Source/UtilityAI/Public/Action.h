@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BehaviorTreeTypes.h"
+#include "Condition.h"
 #include "Action.generated.h"
 
 /**

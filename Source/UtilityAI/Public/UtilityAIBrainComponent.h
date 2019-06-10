@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Components/ActorComponent.h"
+#include "BrainAsset.h"
 #include "UtilityAIBrainComponent.generated.h"
 
 UCLASS(ClassGroup=(UtilityAI), Abstract, meta=(BlueprintSpawnableComponent))

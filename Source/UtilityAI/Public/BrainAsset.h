@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
+#include "Action.h"
 #include "BrainAsset.generated.h"
 
 /**
