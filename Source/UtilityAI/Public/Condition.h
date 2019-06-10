@@ -17,9 +17,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual bool Evaluate() const = 0;
 
-	UFUNCTION(BlueprintCallable)
-	void SetExpression(UExpression* Expr);
-
 private:
 	UPROPERTY()
 	UExpression* Expression;
