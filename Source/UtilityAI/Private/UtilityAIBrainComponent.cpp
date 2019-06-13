@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "UtilityAIBrainComponent.h"
+#include "BrainAsset.h"
 
 UUtilityAIBrainComponent::UUtilityAIBrainComponent()
 {
@@ -9,5 +10,8 @@ UUtilityAIBrainComponent::UUtilityAIBrainComponent()
 
 void UUtilityAIBrainComponent::Act() const
 {
-	// TODO: implement
+	const auto Action = Asset->SelectAction();
+	check(Action);
+	const auto Owner = GetOwner();
+	Action->Run(Owner);
 }

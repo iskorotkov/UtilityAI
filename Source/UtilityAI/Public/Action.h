@@ -21,7 +21,7 @@ public:
 
 	// TODO: pass AI agent
 	UFUNCTION(BlueprintCallable)
-	virtual void Run() const;
+	virtual void Run(const AActor* Agent) const;
 
 	// TODO: override GetDesc()
 
