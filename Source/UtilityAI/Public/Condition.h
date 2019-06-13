@@ -8,7 +8,7 @@
 /**
  * 
  */
-UCLASS(BlueprintType)
+UCLASS(BlueprintType, Abstract)
 class UTILITYAI_API UCondition : public UObject
 {
 	GENERATED_BODY()

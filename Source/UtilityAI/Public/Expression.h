@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS(BlueprintType)
+UCLASS(BlueprintType, Abstract)
 class UTILITYAI_API UExpression : public UObject
 {
 	GENERATED_BODY()

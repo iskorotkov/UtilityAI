@@ -10,7 +10,7 @@
 /**
  * 
  */
-UCLASS(BlueprintType)
+UCLASS(BlueprintType, Abstract)
 class UTILITYAI_API UAction : public UObject
 {
 	GENERATED_BODY()
