@@ -18,3 +18,8 @@ void UAction::Run(TScriptInterface<IAgent> Agent) const
 {
 	Agent->RunBehavior(Behavior);
 }
+
+void UAction::SetConditions(const TArray<UCondition*>& NewConditions)
+{
+	Conditions = NewConditions;
+}

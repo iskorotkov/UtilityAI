@@ -23,6 +23,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void Run(TScriptInterface<IAgent> Agent) const;
 
+	UFUNCTION(BlueprintCallable)
+	virtual void SetConditions(const TArray<UCondition*>& NewConditions);
+
 	// TODO: override GetDesc()
 
 private:

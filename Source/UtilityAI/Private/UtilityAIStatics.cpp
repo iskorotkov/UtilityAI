@@ -1,12 +1,15 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "UtilityAIStatics.h"
+#include "Action.h"
+#include "Condition.h"
+#include "Expression.h"
 
 UAction* UUtilityAIStatics::CreateAction(UObject* Outer, const TSubclassOf<UAction> Class, TArray<UCondition*> Conditions)
 {
 	const auto Action = NewObject<UAction>(Outer, Class);
 	check(Action);
-	// TODO: set conditions
+	Action->SetConditions(Conditions);
 	return Action;
 }
 
@@ -14,7 +17,7 @@ UCondition* UUtilityAIStatics::CreateCondition(UObject* Outer, const TSubclassOf
 {
 	const auto Condition = NewObject<UCondition>(Outer, Class);
 	check(Condition);
-	// TODO: set expression
+	Condition->SetExpression(Expression);
 	return Condition;
 }
 

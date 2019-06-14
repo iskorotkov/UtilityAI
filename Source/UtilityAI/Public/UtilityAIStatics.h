@@ -4,9 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "Action.h"
 #include "UtilityAIStatics.generated.h"
 
+class UExpression;
+class UCondition;
+class UAction;
 /**
  * 
  */
