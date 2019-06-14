@@ -21,6 +21,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void SetExpression(UExpression* Expr);
 
+	UFUNCTION(BlueprintCallable)
+	virtual void SetValues(float Success, float Failure);
+
 private:
 	UPROPERTY()
 	UExpression* Expression;

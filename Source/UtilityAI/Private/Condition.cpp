@@ -12,3 +12,9 @@ void UCondition::SetExpression(UExpression* Expr)
 {
 	Expression = Expr;
 }
+
+void UCondition::SetValues(const float Success, const float Failure)
+{
+	SuccessValue = Success;
+	FailureValue = Failure;
+}
