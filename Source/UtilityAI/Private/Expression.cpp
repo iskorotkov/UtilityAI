@@ -4,5 +4,5 @@
 
 bool UExpression::Evaluate() const
 {
-	return true;
+	return false;
 }
