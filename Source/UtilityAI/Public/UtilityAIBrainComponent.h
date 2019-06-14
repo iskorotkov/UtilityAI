@@ -3,9 +3,9 @@
 #pragma once
 
 #include "Components/ActorComponent.h"
-#include "BrainAsset.h"
 #include "UtilityAIBrainComponent.generated.h"
 
+class UBrainAsset;
 UCLASS(ClassGroup=(UtilityAI), meta=(BlueprintSpawnableComponent))
 class UTILITYAI_API UUtilityAIBrainComponent : public UActorComponent
 {
