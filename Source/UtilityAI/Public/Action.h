@@ -3,10 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BehaviorTree/BehaviorTreeTypes.h"
-#include "Condition.h"
 #include "Action.generated.h"
 
+class UBehaviorTree;
+class UCondition;
+class IAgent;
 /**
  * 
  */
@@ -19,9 +20,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual float Evaluate() const;
 
-	// TODO: pass AI agent
 	UFUNCTION(BlueprintCallable)
-	virtual void Run(const AActor* Agent) const;
+	virtual void Run(TScriptInterface<IAgent> Agent) const;
 
 	// TODO: override GetDesc()
 
