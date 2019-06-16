@@ -9,9 +9,8 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType, Abstract)
 class UTILITYAI_API UBinaryOperation : public UOperation
 {
 	GENERATED_BODY()
-	
 };
