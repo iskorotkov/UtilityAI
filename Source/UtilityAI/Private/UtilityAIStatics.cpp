@@ -11,66 +11,72 @@
 #include "Predicate.h"
 #include "Operation.h"
 
-UAction* UUtilityAIStatics::CreateAction(UObject* Outer, const TSubclassOf<UAction> Class, TArray<UCondition*> Conditions)
+UAction* UUtilityAIStatics::CreateAction(const TSubclassOf<UAction> Class, TArray<UCondition*> Conditions)
 {
-	const auto Action = NewObject<UAction>(Outer, Class);
+	
+	const auto Action = NewObject<UAction>(GetOuter(), Class);
 	check(Action);
 	Action->SetConditions(Conditions);
 	return Action;
 }
 
-UCondition* UUtilityAIStatics::CreateCondition(UObject* Outer, const TSubclassOf<UCondition> Class, UExpression* Expression, float Success, float Failure)
+UCondition* UUtilityAIStatics::CreateCondition(const TSubclassOf<UCondition> Class, UExpression* Expression, float Success, float Failure)
 {
-	const auto Condition = NewObject<UCondition>(Outer, Class);
+	const auto Condition = NewObject<UCondition>(GetOuter(), Class);
 	check(Condition);
 	Condition->SetExpression(Expression);
 	return Condition;
 }
 
-UExpression* UUtilityAIStatics::CreateUnaryOperation(UObject* Outer, TSubclassOf<UUnaryOperation> Class, UExpression* Operand)
+UExpression* UUtilityAIStatics::CreateUnaryOperation(TSubclassOf<UUnaryOperation> Class, UExpression* Operand)
 {
-	const auto Expression = NewObject<UExpression>(Outer, Class);
+	const auto Expression = NewObject<UExpression>(GetOuter(), Class);
 	check(Expression);
 	return Expression;
 }
 
-UExpression* UUtilityAIStatics::CreateBinaryOperation(UObject* Outer, TSubclassOf<UBinaryOperation> Class, UExpression* Operand1, UExpression* Operand2)
+UExpression* UUtilityAIStatics::CreateBinaryOperation(TSubclassOf<UBinaryOperation> Class, UExpression* Operand1, UExpression* Operand2)
 {
-	const auto Expression = NewObject<UExpression>(Outer, Class);
+	const auto Expression = NewObject<UExpression>(GetOuter(), Class);
 	check(Expression);
 	return Expression;
 }
 
-UExpression* UUtilityAIStatics::CreateTernaryOperation(UObject* Outer, TSubclassOf<UTernaryOperation> Class, UExpression* Operand1, UExpression* Operand2, UExpression* Operand3)
+UExpression* UUtilityAIStatics::CreateTernaryOperation(TSubclassOf<UTernaryOperation> Class, UExpression* Operand1, UExpression* Operand2, UExpression* Operand3)
 {
-	const auto Expression = NewObject<UExpression>(Outer, Class);
+	const auto Expression = NewObject<UExpression>(GetOuter(), Class);
 	check(Expression);
 	return Expression;
 }
 
-UExpression* UUtilityAIStatics::CreateMultiOperation(UObject* Outer, TSubclassOf<UMultiOperation> Class, TArray<UExpression*> Operands)
+UExpression* UUtilityAIStatics::CreateMultiOperation(TSubclassOf<UMultiOperation> Class, TArray<UExpression*> Operands)
 {
-	const auto Expression = NewObject<UExpression>(Outer, Class);
+	const auto Expression = NewObject<UExpression>(GetOuter(), Class);
 	check(Expression);
 	return Expression;
 }
 
-UExpression* UUtilityAIStatics::CreatePredicate(UObject* Outer, TSubclassOf<UPredicate> Class)
+UExpression* UUtilityAIStatics::CreatePredicate(TSubclassOf<UPredicate> Class)
 {
-	return NewObject<UExpression>(Outer, Class);
+	return NewObject<UExpression>(GetOuter(), Class);
 }
 
-UAction* UUtilityAIStatics::CreateDefaultAction(UObject* Outer, TSubclassOf<UAction> Class)
+UAction* UUtilityAIStatics::CreateDefaultAction(TSubclassOf<UAction> Class)
 {
-	return NewObject<UAction>(Outer, Class);
+	return NewObject<UAction>(GetOuter(), Class);
 }
 
-UCondition* UUtilityAIStatics::CreateDefaultCondition(UObject* Outer, TSubclassOf<UCondition> Class)
+UCondition* UUtilityAIStatics::CreateDefaultCondition(TSubclassOf<UCondition> Class)
 {
-	return NewObject<UCondition>(Outer, Class);
+	return NewObject<UCondition>(GetOuter(), Class);
 }
 
-UExpression* UUtilityAIStatics::CreateDefaultOperation(UObject* Outer, TSubclassOf<UOperation> Class)
+UExpression* UUtilityAIStatics::CreateDefaultOperation(TSubclassOf<UOperation> Class)
 {
-	return NewObject<UExpression>(Outer, Class);
+	return NewObject<UExpression>(GetOuter(), Class);
+}
+
+UObject* UUtilityAIStatics::GetOuter()
+{
+	return Cast<UObject>(GetTransientPackage());
 }
