@@ -15,17 +15,21 @@ class UTILITYAI_API UCondition : public UObject
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	UFUNCTION(BlueprintCallable)
 	float Evaluate() const;
-	virtual float Evaluate_Implementation() const;
 
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	UFUNCTION(BlueprintCallable)
 	void SetExpression(UExpression* Expr);
-	virtual void SetExpression_Implementation(UExpression* Expr);
 
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	UFUNCTION(BlueprintCallable)
 	void SetValues(float Success, float Failure);
-	virtual void SetValues_Implementation(float Success, float Failure);
+
+protected:
+	UFUNCTION(BlueprintNativeEvent)
+	UExpression* GetExpression() const;
+	virtual UExpression* GetExpression_Implementation() const;
+
+	void PostInitProperties() override;
 
 private:
 	UPROPERTY(VisibleAnywhere)

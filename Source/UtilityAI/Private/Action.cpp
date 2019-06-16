@@ -4,7 +4,7 @@
 #include "Agent.h"
 #include "Condition.h"
 
-float UAction::Evaluate_Implementation() const
+float UAction::Evaluate() const
 {
 	auto Result = 0.f;
 	for (const auto& Condition : Conditions)
@@ -14,12 +14,26 @@ float UAction::Evaluate_Implementation() const
 	return FMath::Clamp(Result, 0.f, 1.f);
 }
 
-void UAction::Run_Implementation(const TScriptInterface<IAgent>& Agent) const
+void UAction::Run(const TScriptInterface<IAgent>& Agent) const
 {
 	Agent->RunBehavior(Behavior);
 }
 
-void UAction::SetConditions_Implementation(const TArray<UCondition*>& NewConditions)
+void UAction::SetConditions(const TArray<UCondition*>& NewConditions)
 {
 	Conditions = NewConditions;
+}
+
+TArray<UCondition*> UAction::GetConditions_Implementation() const
+{
+	return TArray<UCondition*>();
+}
+
+void UAction::PostInitProperties()
+{
+	Super::PostInitProperties();
+	if (Conditions.Num() == 0)
+	{
+		Conditions = GetConditions();
+	}
 }
