@@ -9,9 +9,8 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType, Abstract)
 class UTILITYAI_API UPredicate : public UExpression
 {
 	GENERATED_BODY()
-	
 };
