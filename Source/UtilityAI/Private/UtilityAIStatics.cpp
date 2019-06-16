@@ -27,15 +27,6 @@ UCondition* UUtilityAIStatics::CreateCondition(UObject* Outer, const TSubclassOf
 	return Condition;
 }
 
-UCondition* UUtilityAIStatics::CreateConditionNonDefault(UObject* Outer, TSubclassOf<UCondition> Class, UExpression* Expression, float Success, float Failure)
-{
-	const auto Condition = NewObject<UCondition>(Outer, Class);
-	check(Condition);
-	Condition->SetExpression(Expression);
-	Condition->SetValues(Success, Failure);
-	return Condition;
-}
-
 UExpression* UUtilityAIStatics::CreateUnaryOperation(UObject* Outer, TSubclassOf<UUnaryOperation> Class, UExpression* Operand)
 {
 	const auto Expression = NewObject<UExpression>(Outer, Class);
