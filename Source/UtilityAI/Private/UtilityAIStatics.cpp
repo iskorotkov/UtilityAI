@@ -9,6 +9,7 @@
 #include "TernaryOperation.h"
 #include "MultiOperation.h"
 #include "Predicate.h"
+#include "Operation.h"
 
 UAction* UUtilityAIStatics::CreateAction(UObject* Outer, const TSubclassOf<UAction> Class, TArray<UCondition*> Conditions)
 {
@@ -64,6 +65,21 @@ UExpression* UUtilityAIStatics::CreateMultiOperation(UObject* Outer, TSubclassOf
 }
 
 UExpression* UUtilityAIStatics::CreatePredicate(UObject* Outer, TSubclassOf<UPredicate> Class)
+{
+	return NewObject<UExpression>(Outer, Class);
+}
+
+UAction* UUtilityAIStatics::CreateDefaultAction(UObject* Outer, TSubclassOf<UAction> Class)
+{
+	return NewObject<UAction>(Outer, Class);
+}
+
+UCondition* UUtilityAIStatics::CreateDefaultCondition(UObject* Outer, TSubclassOf<UCondition> Class)
+{
+	return NewObject<UCondition>(Outer, Class);
+}
+
+UExpression* UUtilityAIStatics::CreateDefaultOperation(UObject* Outer, TSubclassOf<UOperation> Class)
 {
 	return NewObject<UExpression>(Outer, Class);
 }
