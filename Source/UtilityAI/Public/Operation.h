@@ -8,9 +8,8 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType, Abstract)
 class UTILITYAI_API UOperation : public UExpression
 {
 	GENERATED_BODY()
-	
 };
