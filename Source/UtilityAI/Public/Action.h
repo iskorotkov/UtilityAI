@@ -11,7 +11,7 @@ class IAgent;
 /**
  * 
  */
-UCLASS(BlueprintType, Abstract)
+UCLASS(BlueprintType)
 class UTILITYAI_API UAction : public UObject
 {
 	GENERATED_BODY()
