@@ -9,14 +9,17 @@ class UAction;
 /**
  * 
  */
-UCLASS(BlueprintType)
-class UTILITYAI_API UBrainAsset : public UPrimaryDataAsset
+UCLASS(BlueprintType, Abstract)
+class UTILITYAI_API UBrainAsset : public UObject
 {
 	GENERATED_BODY()
 
 public:
 	UFUNCTION(BlueprintCallable)
 	virtual UAction* SelectAction() const;
+
+	UFUNCTION(BlueprintCallable)
+	virtual void SetActions(const TArray<UAction*>& NewActions);
 
 private:
 	UPROPERTY(EditAnywhere)
