@@ -15,11 +15,13 @@ class UTILITYAI_API UBrainAsset : public UObject
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable)
-	virtual UAction* SelectAction() const;
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	UAction* SelectAction() const;
+	virtual UAction* SelectAction_Implementation() const;
 
-	UFUNCTION(BlueprintCallable)
-	virtual void SetActions(const TArray<UAction*>& NewActions);
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetActions(const TArray<UAction*>& NewActions);
+	virtual void SetActions_Implementation(const TArray<UAction*>& NewActions);
 
 private:
 	UPROPERTY(EditAnywhere)

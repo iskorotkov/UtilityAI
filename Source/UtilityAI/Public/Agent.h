@@ -23,5 +23,6 @@ class UTILITYAI_API IAgent
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	virtual void RunBehavior(const UBehaviorTree* Behavior) = 0;
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void RunBehavior(const UBehaviorTree* Behavior);
 };

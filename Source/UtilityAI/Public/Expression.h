@@ -15,6 +15,7 @@ class UTILITYAI_API UExpression : public UObject
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable)
-	virtual bool Evaluate() const;
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	bool Evaluate() const;
+	virtual bool Evaluate_Implementation() const;
 };

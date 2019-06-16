@@ -8,7 +8,7 @@ UUtilityAIBrainComponent::UUtilityAIBrainComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 }
 
-void UUtilityAIBrainComponent::Act() const
+void UUtilityAIBrainComponent::Act_Implementation() const
 {
 	const auto Action = Asset->SelectAction();
 	check(Action);

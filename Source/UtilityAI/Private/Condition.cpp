@@ -3,17 +3,17 @@
 #include "Condition.h"
 #include "Expression.h"
 
-float UCondition::Evaluate() const
+float UCondition::Evaluate_Implementation() const
 {
 	return Expression && Expression->Evaluate() ? SuccessValue : FailureValue;
 }
 
-void UCondition::SetExpression(UExpression* Expr)
+void UCondition::SetExpression_Implementation(UExpression* Expr)
 {
 	Expression = Expr;
 }
 
-void UCondition::SetValues(const float Success, const float Failure)
+void UCondition::SetValues_Implementation(const float Success, const float Failure)
 {
 	SuccessValue = Success;
 	FailureValue = Failure;

@@ -17,14 +17,17 @@ class UTILITYAI_API UAction : public UObject
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable)
-	virtual float Evaluate() const;
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	float Evaluate() const;
+	virtual float Evaluate_Implementation() const;
 
-	UFUNCTION(BlueprintCallable)
-	virtual void Run(TScriptInterface<IAgent> Agent) const;
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void Run(const TScriptInterface<IAgent>& Agent) const;
+	virtual void Run_Implementation(const TScriptInterface<IAgent>& Agent) const;
 
-	UFUNCTION(BlueprintCallable)
-	virtual void SetConditions(const TArray<UCondition*>& NewConditions);
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetConditions(const TArray<UCondition*>& NewConditions);
+	void SetConditions_Implementation(const TArray<UCondition*>& NewConditions);
 
 	// TODO: override GetDesc()
 

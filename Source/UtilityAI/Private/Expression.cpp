@@ -2,7 +2,7 @@
 
 #include "Expression.h"
 
-bool UExpression::Evaluate() const
+bool UExpression::Evaluate_Implementation() const
 {
 	return false;
 }

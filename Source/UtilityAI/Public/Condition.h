@@ -15,14 +15,17 @@ class UTILITYAI_API UCondition : public UObject
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable)
-	virtual float Evaluate() const;
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	float Evaluate() const;
+	virtual float Evaluate_Implementation() const;
 
-	UFUNCTION(BlueprintCallable)
-	virtual void SetExpression(UExpression* Expr);
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetExpression(UExpression* Expr);
+	virtual void SetExpression_Implementation(UExpression* Expr);
 
-	UFUNCTION(BlueprintCallable)
-	virtual void SetValues(float Success, float Failure);
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetValues(float Success, float Failure);
+	virtual void SetValues_Implementation(float Success, float Failure);
 
 private:
 	UPROPERTY()

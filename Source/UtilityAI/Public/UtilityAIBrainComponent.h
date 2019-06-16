@@ -14,8 +14,9 @@ class UTILITYAI_API UUtilityAIBrainComponent : public UActorComponent
 public:
 	UUtilityAIBrainComponent();
 
-	UFUNCTION(BlueprintCallable)
-	virtual void Act() const;
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void Act() const;
+	virtual void Act_Implementation() const;
 
 protected:
 	void BeginPlay() override;
