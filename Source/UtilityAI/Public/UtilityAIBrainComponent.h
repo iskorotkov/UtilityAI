@@ -6,7 +6,7 @@
 #include "UtilityAIBrainComponent.generated.h"
 
 class UBrainAsset;
-UCLASS(ClassGroup=(UtilityAI), meta=(BlueprintSpawnableComponent))
+UCLASS(ClassGroup=(UtilityAI), meta=(BlueprintSpawnableComponent), Blueprintable)
 class UTILITYAI_API UUtilityAIBrainComponent : public UActorComponent
 {
 	GENERATED_BODY()

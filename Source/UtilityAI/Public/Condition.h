@@ -9,7 +9,7 @@ class UExpression;
 /**
  * 
  */
-UCLASS(BlueprintType)
+UCLASS(BlueprintType, Blueprintable)
 class UTILITYAI_API UCondition : public UObject
 {
 	GENERATED_BODY()
@@ -28,12 +28,12 @@ public:
 	virtual void SetValues_Implementation(float Success, float Failure);
 
 private:
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere)
 	UExpression* Expression;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere)
 	float SuccessValue = 0.1f;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere)
 	float FailureValue = 0.0f;
 };
