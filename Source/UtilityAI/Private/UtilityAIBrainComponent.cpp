@@ -15,3 +15,9 @@ void UUtilityAIBrainComponent::Act() const
 	const auto Owner = GetOwner();
 	Action->Run(Owner);
 }
+
+void UUtilityAIBrainComponent::BeginPlay()
+{
+	Super::BeginPlay();
+	Asset = NewObject<UBrainAsset>(this, BrainAssetClass, TEXT("Brain Asset"));
+}

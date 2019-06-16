@@ -17,7 +17,13 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void Act() const;
 
+protected:
+	void BeginPlay() override;
+
 private:
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UBrainAsset> BrainAssetClass;
+
 	UPROPERTY()
 	UBrainAsset* Asset;
 };
