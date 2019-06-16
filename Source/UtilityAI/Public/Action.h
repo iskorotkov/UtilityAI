@@ -27,7 +27,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void SetConditions(const TArray<UCondition*>& NewConditions);
-	void SetConditions_Implementation(const TArray<UCondition*>& NewConditions);
+	virtual void SetConditions_Implementation(const TArray<UCondition*>& NewConditions);
 
 	// TODO: override GetDesc()
 
