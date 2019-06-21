@@ -9,7 +9,7 @@ class UAction;
 /**
  * 
  */
-UCLASS(BlueprintType, Abstract, Blueprintable)
+UCLASS(BlueprintType, Abstract, Blueprintable, EditInlineNew)
 class UTILITYAI_API UBrainAsset : public UObject
 {
 	GENERATED_BODY()
@@ -20,6 +20,6 @@ public:
 	virtual UAction* SelectAction_Implementation() const;
 
 private:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Instanced)
 	TArray<UAction*> Actions;
 };

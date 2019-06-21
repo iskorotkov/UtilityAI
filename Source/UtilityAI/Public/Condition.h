@@ -9,27 +9,19 @@ class UExpression;
 /**
  * 
  */
-UCLASS(BlueprintType, Blueprintable)
+UCLASS(BlueprintType, Blueprintable, Abstract, EditInlineNew)
 class UTILITYAI_API UCondition : public UObject
 {
 	GENERATED_BODY()
 
 public:
 	UFUNCTION(BlueprintCallable)
-	float Evaluate() const;
-
-	UFUNCTION(BlueprintCallable)
-	void SetExpression(UExpression* Expr);
-
-	UFUNCTION(BlueprintCallable)
-	void SetValues(float Success, float Failure);
+	float Evaluate();
 
 protected:
 	UFUNCTION(BlueprintNativeEvent)
 	UExpression* GetExpression() const;
 	virtual UExpression* GetExpression_Implementation() const;
-
-	void PostInitProperties() override;
 
 private:
 	UPROPERTY(VisibleAnywhere)

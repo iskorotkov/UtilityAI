@@ -6,15 +6,12 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "UtilityAIStatics.generated.h"
 
-class UOperation;
 class UPredicate;
 class UMultiOperation;
 class UTernaryOperation;
 class UBinaryOperation;
 class UUnaryOperation;
 class UExpression;
-class UCondition;
-class UAction;
 /**
  * 
  */
@@ -25,12 +22,6 @@ class UTILITYAI_API UUtilityAIStatics : public UBlueprintFunctionLibrary
 
 public:
 	// Creating and setting up base objects
-
-	UFUNCTION(Category="Utility AI", BlueprintPure)
-	static UAction* CreateAction(TSubclassOf<UAction> Class, TArray<UCondition*> Conditions);
-
-	UFUNCTION(Category="Utility AI", BlueprintPure)
-	static UCondition* CreateCondition(TSubclassOf<UCondition> Class, UExpression* Expression, float Success = 1.f, float Failure = 0.f);
 
 	UFUNCTION(Category="Utility AI", BlueprintPure)
 	static UExpression* CreateUnaryOperation(TSubclassOf<UUnaryOperation> Class, UExpression* Operand);
@@ -46,17 +37,6 @@ public:
 
 	UFUNCTION(Category="Utility AI", BlueprintPure)
 	static UExpression* CreatePredicate(TSubclassOf<UPredicate> Class);
-
-	// Creating pre-defined objects
-
-	UFUNCTION(Category = "Utility AI", BlueprintPure)
-	static UAction* CreateDefaultAction(TSubclassOf<UAction> Class);
-
-	UFUNCTION(Category = "Utility AI", BlueprintPure)
-	static UCondition* CreateDefaultCondition(TSubclassOf<UCondition> Class);
-
-	UFUNCTION(Category = "Utility AI", BlueprintPure)
-	static UExpression* CreateDefaultOperation(TSubclassOf<UOperation> Class);
 
 private:
 	static UObject* GetOuter();

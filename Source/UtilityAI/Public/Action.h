@@ -10,7 +10,7 @@ class IAgent;
 /**
  * 
  */
-UCLASS(BlueprintType, Blueprintable, Abstract)
+UCLASS(BlueprintType, Blueprintable, Abstract, EditInlineNew)
 class UTILITYAI_API UAction : public UObject
 {
 	GENERATED_BODY()
@@ -26,6 +26,6 @@ public:
 	// TODO: override GetDesc()
 
 private:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Instanced)
 	TArray<UCondition*> Conditions;
 };
