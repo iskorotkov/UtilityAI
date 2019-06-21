@@ -5,13 +5,12 @@
 #include "CoreMinimal.h"
 #include "Action.generated.h"
 
-class UBehaviorTree;
 class UCondition;
 class IAgent;
 /**
  * 
  */
-UCLASS(BlueprintType, Blueprintable)
+UCLASS(BlueprintType, Blueprintable, Abstract)
 class UTILITYAI_API UAction : public UObject
 {
 	GENERATED_BODY()
@@ -20,8 +19,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	float Evaluate() const;
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintNativeEvent)
 	void Run(const TScriptInterface<IAgent>& Agent) const;
+	virtual void Run_Implementation(const TScriptInterface<IAgent>& Agent) const;
 
 	UFUNCTION(BlueprintCallable)
 	void SetConditions(const TArray<UCondition*>& NewConditions);
@@ -38,7 +38,4 @@ protected:
 private:
 	UPROPERTY(VisibleAnywhere)
 	TArray<UCondition*> Conditions;
-
-	UPROPERTY(EditAnywhere)
-	UBehaviorTree* Behavior;
 };

@@ -14,9 +14,8 @@ float UAction::Evaluate() const
 	return FMath::Clamp(Result, 0.f, 1.f);
 }
 
-void UAction::Run(const TScriptInterface<IAgent>& Agent) const
+void UAction::Run_Implementation(const TScriptInterface<IAgent>& Agent) const
 {
-	Agent->RunBehavior(Behavior);
 }
 
 void UAction::SetConditions(const TArray<UCondition*>& NewConditions)
