@@ -17,22 +17,3 @@ float UAction::Evaluate() const
 void UAction::Run_Implementation(const TScriptInterface<IAgent>& Agent) const
 {
 }
-
-void UAction::SetConditions(const TArray<UCondition*>& NewConditions)
-{
-	Conditions = NewConditions;
-}
-
-TArray<UCondition*> UAction::GetConditions_Implementation() const
-{
-	return TArray<UCondition*>();
-}
-
-void UAction::PostInitProperties()
-{
-	Super::PostInitProperties();
-	if (Conditions.Num() == 0)
-	{
-		Conditions = GetConditions();
-	}
-}

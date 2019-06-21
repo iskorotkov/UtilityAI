@@ -23,19 +23,9 @@ public:
 	void Run(const TScriptInterface<IAgent>& Agent) const;
 	virtual void Run_Implementation(const TScriptInterface<IAgent>& Agent) const;
 
-	UFUNCTION(BlueprintCallable)
-	void SetConditions(const TArray<UCondition*>& NewConditions);
-
 	// TODO: override GetDesc()
 
-protected:
-	UFUNCTION(BlueprintNativeEvent)
-	TArray<UCondition*> GetConditions() const;
-	virtual TArray<UCondition*> GetConditions_Implementation() const;
-
-	void PostInitProperties() override;
-
 private:
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere)
 	TArray<UCondition*> Conditions;
 };

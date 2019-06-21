@@ -5,26 +5,18 @@
 
 UAction* UBrainAsset::SelectAction_Implementation() const
 {
-	return nullptr;
-}
-
-void UBrainAsset::SetActions(const TArray<UAction*>& NewActions)
-{
-	// TODO: avoid copying Actions array
-	Actions = NewActions;
-}
-
-TArray<UAction*> UBrainAsset::GetActions_Implementation() const
-{
-	return TArray<UAction*>();
-}
-
-void UBrainAsset::PostInitProperties()
-{
-	Super::PostInitProperties();
-	if (Actions.Num() == 0)
+	UAction* Action = nullptr;
+	// TODO: magic number (introduce UtilityAIConstants class)
+	auto Value = 0.f;
+	for (const auto A : Actions)
 	{
-		// TODO: avoid array copying
-		Actions = GetActions();
+		check(A);
+		const auto V = A->Evaluate();
+		if (V > Value)
+		{
+			Value = V;
+			Action = A;
+		}
 	}
+	return Action;
 }

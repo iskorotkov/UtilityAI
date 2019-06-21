@@ -19,17 +19,7 @@ public:
 	UAction* SelectAction() const;
 	virtual UAction* SelectAction_Implementation() const;
 
-	UFUNCTION(BlueprintCallable)
-	void SetActions(const TArray<UAction*>& NewActions);
-
-protected:
-	UFUNCTION(BlueprintNativeEvent)
-	TArray<UAction*> GetActions() const;
-	virtual TArray<UAction*> GetActions_Implementation() const;
-
-	void PostInitProperties() override;
-
 private:
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere)
 	TArray<UAction*> Actions;
 };
