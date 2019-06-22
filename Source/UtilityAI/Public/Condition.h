@@ -24,12 +24,11 @@ protected:
 	virtual UExpression* GetExpression_Implementation() const;
 
 private:
-	UPROPERTY(VisibleAnywhere)
 	UExpression* Expression;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere)
 	float SuccessValue = 0.1f;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere)
 	float FailureValue = 0.0f;
 };
