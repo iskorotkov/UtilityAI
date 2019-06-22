@@ -8,7 +8,7 @@ void UTimedBrainComponent::Start()
 {
 	if (!Handle.IsValid())
 	{
-		GetWorld()->GetTimerManager().SetTimer(Handle, Rate, true, FirstDelay);
+		GetWorld()->GetTimerManager().SetTimer<UTimedBrainComponent>(Handle, this, &UTimedBrainComponent::Act, Rate, true, FirstDelay);
 	}
 }
 
