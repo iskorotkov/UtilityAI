@@ -3,9 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Condition.h"
 #include "Action.generated.h"
 
-class UCondition;
 class IAgent;
 /**
  * 
@@ -26,6 +26,6 @@ public:
 	// TODO: override GetDesc()
 
 private:
-	UPROPERTY(EditAnywhere, Instanced)
-	TArray<UCondition*> Conditions;
+	UPROPERTY(EditAnywhere)
+	TArray<FCondition> Conditions;
 };

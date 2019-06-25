@@ -5,27 +5,22 @@
 #include "CoreMinimal.h"
 #include "Condition.generated.h"
 
+class UPredicate;
 class IAgent;
-class UExpression;
 /**
  * 
  */
-UCLASS(BlueprintType, Blueprintable, Abstract, EditInlineNew)
-class UTILITYAI_API UCondition : public UObject
+USTRUCT(BlueprintType)
+struct UTILITYAI_API FCondition
 {
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable)
-	float Evaluate(const TScriptInterface<IAgent>& Agent);
-
-protected:
-	UFUNCTION(BlueprintNativeEvent)
-	UExpression* GetExpression() const;
-	virtual UExpression* GetExpression_Implementation() const;
+	float Evaluate(const TScriptInterface<IAgent>& Agent) const;
 
 private:
-	UExpression* Expression;
+	UPROPERTY()
+	UPredicate* Predicate = nullptr;
 
 	UPROPERTY(EditAnywhere)
 	float SuccessValue = 0.1f;
