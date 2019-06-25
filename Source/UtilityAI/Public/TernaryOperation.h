@@ -13,4 +13,14 @@ UCLASS(BlueprintType, Abstract, Blueprintable)
 class UTILITYAI_API UTernaryOperation : public UOperation
 {
 	GENERATED_BODY()
+
+private:
+	UPROPERTY()
+	UExpression* Operand1;
+
+	UPROPERTY()
+	UExpression* Operand2;
+
+	UPROPERTY()
+	UExpression* Operand3;
 };
