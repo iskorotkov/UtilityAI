@@ -2,6 +2,7 @@
 
 #include "UtilityAIBrainComponent.h"
 #include "BrainAsset.h"
+#include "Action.h"
 
 UUtilityAIBrainComponent::UUtilityAIBrainComponent()
 {
@@ -10,10 +11,11 @@ UUtilityAIBrainComponent::UUtilityAIBrainComponent()
 
 void UUtilityAIBrainComponent::Act_Implementation() const
 {
-	const auto Action = Asset->SelectAction();
-	check(Action);
-	const auto Owner = GetOwner();
-	Action->Run(Owner);
+	if (const auto Action = Asset->SelectAction())
+	{
+		const auto Owner = GetOwner();
+		Action->Run(Owner);
+	}
 }
 
 void UUtilityAIBrainComponent::BeginPlay()

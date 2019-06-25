@@ -7,7 +7,7 @@ UAction* UBrainAsset::SelectAction_Implementation() const
 {
 	UAction* Action = nullptr;
 	// TODO: magic number (introduce UtilityAIConstants class)
-	auto Value = 0.f;
+	auto Value = -1.f;
 	for (const auto A : Actions)
 	{
 		check(A);
