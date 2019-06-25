@@ -17,7 +17,7 @@ class UTILITYAI_API UAction : public UObject
 
 public:
 	UFUNCTION(BlueprintCallable)
-	float Evaluate() const;
+	float Evaluate(const TScriptInterface<IAgent>& Agent) const;
 
 	UFUNCTION(BlueprintNativeEvent)
 	void Run(const TScriptInterface<IAgent>& Agent) const;

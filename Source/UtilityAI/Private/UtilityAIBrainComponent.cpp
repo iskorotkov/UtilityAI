@@ -11,7 +11,8 @@ UUtilityAIBrainComponent::UUtilityAIBrainComponent()
 
 void UUtilityAIBrainComponent::Act_Implementation() const
 {
-	if (const auto Action = Asset->SelectAction())
+	const TScriptInterface<IAgent> Agent = GetOwner();
+	if (const auto Action = Asset->SelectAction(Agent))
 	{
 		const auto Owner = GetOwner();
 		Action->Run(Owner);

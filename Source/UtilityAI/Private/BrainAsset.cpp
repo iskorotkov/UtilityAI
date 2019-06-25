@@ -3,7 +3,7 @@
 #include "BrainAsset.h"
 #include "Action.h"
 
-UAction* UBrainAsset::SelectAction_Implementation() const
+UAction* UBrainAsset::SelectAction_Implementation(const TScriptInterface<IAgent>& Agent) const
 {
 	UAction* Action = nullptr;
 	// TODO: magic number (introduce UtilityAIConstants class)
@@ -11,7 +11,7 @@ UAction* UBrainAsset::SelectAction_Implementation() const
 	for (const auto A : Actions)
 	{
 		check(A);
-		const auto V = A->Evaluate();
+		const auto V = A->Evaluate(Agent);
 		if (V > Value)
 		{
 			Value = V;

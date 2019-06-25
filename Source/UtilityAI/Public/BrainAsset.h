@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "BrainAsset.generated.h"
 
+class IAgent;
 class UAction;
 /**
  * 
@@ -16,8 +17,8 @@ class UTILITYAI_API UBrainAsset : public UObject
 
 public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	UAction* SelectAction() const;
-	virtual UAction* SelectAction_Implementation() const;
+	UAction* SelectAction(const TScriptInterface<IAgent>& Agent) const;
+	virtual UAction* SelectAction_Implementation(const TScriptInterface<IAgent>& Agent) const;
 
 private:
 	UPROPERTY(EditAnywhere, Instanced)

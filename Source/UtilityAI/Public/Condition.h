@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Condition.generated.h"
 
+class IAgent;
 class UExpression;
 /**
  * 
@@ -16,7 +17,7 @@ class UTILITYAI_API UCondition : public UObject
 
 public:
 	UFUNCTION(BlueprintCallable)
-	float Evaluate();
+	float Evaluate(const TScriptInterface<IAgent>& Agent);
 
 protected:
 	UFUNCTION(BlueprintNativeEvent)

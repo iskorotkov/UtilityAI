@@ -6,6 +6,7 @@
 #include "UObject/NoExportTypes.h"
 #include "Expression.generated.h"
 
+class IAgent;
 /**
  * 
  */
@@ -16,6 +17,6 @@ class UTILITYAI_API UExpression : public UObject
 
 public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	bool Evaluate() const;
-	virtual bool Evaluate_Implementation() const;
+	bool Evaluate(const TScriptInterface<IAgent>& Agent) const;
+	virtual bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent) const;
 };

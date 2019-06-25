@@ -2,14 +2,15 @@
 
 #include "Condition.h"
 #include "Expression.h"
+#include "Agent.h"
 
-float UCondition::Evaluate()
+float UCondition::Evaluate(const TScriptInterface<IAgent>& Agent)
 {
 	if (!Expression)
 	{
 		Expression = GetExpression();
 	}
-	return Expression && Expression->Evaluate() ? SuccessValue : FailureValue;
+	return Expression && Expression->Evaluate(Agent) ? SuccessValue : FailureValue;
 }
 
 UExpression* UCondition::GetExpression_Implementation() const
