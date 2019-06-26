@@ -2,12 +2,14 @@
 
 #include "BrainAsset.h"
 #include "Action.h"
+#include "SubclassOf.h"
 
-UAction* UBrainAsset::SelectAction_Implementation(const TScriptInterface<IAgent>& Agent) const
+UAction* UBrainAsset::SelectAction_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	UAction* Action = nullptr;
 	// TODO: magic number (introduce UtilityAIConstants class)
 	auto Value = -1.f;
+	CreateActions(Agent);
 	for (const auto A : Actions)
 	{
 		check(A);
@@ -19,4 +21,15 @@ UAction* UBrainAsset::SelectAction_Implementation(const TScriptInterface<IAgent>
 		}
 	}
 	return Action;
+}
+
+void UBrainAsset::CreateActions(const TScriptInterface<IAgent>& Agent)
+{
+	if (ActionClasses.Num() > Actions.Num())
+	{
+		for (const auto& Class : ActionClasses)
+		{
+			Actions.Add(NewObject<UAction>(Agent.GetObject(), Class));
+		}
+	}
 }

@@ -10,14 +10,14 @@ class IAgent;
 /**
  * 
  */
-UCLASS(BlueprintType, Blueprintable, Abstract, EditInlineNew)
+UCLASS(BlueprintType, Blueprintable, Abstract)
 class UTILITYAI_API UAction : public UObject
 {
 	GENERATED_BODY()
 
 public:
 	UFUNCTION(BlueprintCallable)
-	float Evaluate(const TScriptInterface<IAgent>& Agent) const;
+	float Evaluate(const TScriptInterface<IAgent>& Agent);
 
 	UFUNCTION(BlueprintNativeEvent)
 	void Run(const TScriptInterface<IAgent>& Agent) const;

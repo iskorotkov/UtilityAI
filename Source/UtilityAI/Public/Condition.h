@@ -16,11 +16,14 @@ struct UTILITYAI_API FCondition
 	GENERATED_BODY()
 
 public:
-	float Evaluate(const TScriptInterface<IAgent>& Agent) const;
+	float Evaluate(const TScriptInterface<IAgent>& Agent);
 
 private:
 	UPROPERTY()
 	UPredicate* Predicate = nullptr;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UPredicate> PredicateClass;
 
 	UPROPERTY(EditAnywhere)
 	float SuccessValue = 0.1f;

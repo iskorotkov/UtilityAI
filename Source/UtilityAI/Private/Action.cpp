@@ -4,10 +4,10 @@
 #include "Agent.h"
 #include "Condition.h"
 
-float UAction::Evaluate(const TScriptInterface<IAgent>& Agent) const
+float UAction::Evaluate(const TScriptInterface<IAgent>& Agent)
 {
 	auto Result = 0.f;
-	for (const auto& Condition : Conditions)
+	for (auto& Condition : Conditions)
 	{
 		Result += Condition.Evaluate(Agent);
 	}

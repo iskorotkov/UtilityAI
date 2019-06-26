@@ -10,17 +10,21 @@ class UAction;
 /**
  * 
  */
-UCLASS(BlueprintType, Abstract, Blueprintable, EditInlineNew)
+UCLASS(BlueprintType, Abstract, Blueprintable)
 class UTILITYAI_API UBrainAsset : public UObject
 {
 	GENERATED_BODY()
 
 public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	UAction* SelectAction(const TScriptInterface<IAgent>& Agent) const;
-	virtual UAction* SelectAction_Implementation(const TScriptInterface<IAgent>& Agent) const;
+	UAction* SelectAction(const TScriptInterface<IAgent>& Agent);
+	virtual UAction* SelectAction_Implementation(const TScriptInterface<IAgent>& Agent);
+
+	void CreateActions(const TScriptInterface<IAgent>& Agent);
 
 private:
-	UPROPERTY(EditAnywhere, Instanced)
+	UPROPERTY(EditAnywhere)
+	TArray<TSubclassOf<UAction>> ActionClasses;
+
 	TArray<UAction*> Actions;
 };
