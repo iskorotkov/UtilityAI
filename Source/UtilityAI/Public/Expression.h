@@ -17,6 +17,6 @@ class UTILITYAI_API UExpression : public UObject
 
 public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	bool Evaluate(const TScriptInterface<IAgent>& Agent) const;
-	virtual bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent) const;
+	bool Evaluate(const TScriptInterface<IAgent>& Agent);
+	virtual bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent);
 };

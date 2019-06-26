@@ -2,7 +2,7 @@
 
 #include "Expression.h"
 
-bool UExpression::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent) const
+bool UExpression::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	return false;
 }
