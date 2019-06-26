@@ -19,7 +19,7 @@ public:
 	float Evaluate(const TScriptInterface<IAgent>& Agent);
 
 private:
-	UPROPERTY(VisibleInstanceOnly)
+	UPROPERTY()
 	UPredicate* Predicate = nullptr;
 
 	UPROPERTY(EditAnywhere)
