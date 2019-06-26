@@ -12,35 +12,35 @@
 
 UExpression* UUtilityAIStatics::CreateUnaryOperation(TSubclassOf<UUnaryOperation> Class, UExpression* Operand)
 {
-	const auto Expression = NewObject<UExpression>(GetOuter(), Class);
+	const auto Expression = NewObject<UExpression>(GetOuter(), Class, TEXT("Unary operation"));
 	check(Expression);
 	return Expression;
 }
 
 UExpression* UUtilityAIStatics::CreateBinaryOperation(TSubclassOf<UBinaryOperation> Class, UExpression* Operand1, UExpression* Operand2)
 {
-	const auto Expression = NewObject<UExpression>(GetOuter(), Class);
+	const auto Expression = NewObject<UExpression>(GetOuter(), Class, TEXT("Binary operation"));
 	check(Expression);
 	return Expression;
 }
 
 UExpression* UUtilityAIStatics::CreateTernaryOperation(TSubclassOf<UTernaryOperation> Class, UExpression* Operand1, UExpression* Operand2, UExpression* Operand3)
 {
-	const auto Expression = NewObject<UExpression>(GetOuter(), Class);
+	const auto Expression = NewObject<UExpression>(GetOuter(), Class, TEXT("Ternary operation"));
 	check(Expression);
 	return Expression;
 }
 
 UExpression* UUtilityAIStatics::CreateMultiOperation(TSubclassOf<UMultiOperation> Class, TArray<UExpression*> Operands)
 {
-	const auto Expression = NewObject<UExpression>(GetOuter(), Class);
+	const auto Expression = NewObject<UExpression>(GetOuter(), Class, TEXT("Multi operation"));
 	check(Expression);
 	return Expression;
 }
 
 UExpression* UUtilityAIStatics::CreatePredicate(TSubclassOf<UPredicate> Class)
 {
-	return NewObject<UExpression>(GetOuter(), Class);
+	return NewObject<UExpression>(GetOuter(), Class, TEXT("Predicate"));
 }
 
 AAIController* UUtilityAIStatics::AsAIController(const TScriptInterface<IAgent>& Agent)

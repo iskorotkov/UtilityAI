@@ -29,7 +29,7 @@ void UBrainAsset::CreateActions(const TScriptInterface<IAgent>& Agent)
 	{
 		for (const auto& Class : ActionClasses)
 		{
-			Actions.Add(NewObject<UAction>(Agent.GetObject(), Class));
+			Actions.Add(NewObject<UAction>(Agent.GetObject(), Class, TEXT("Action")));
 		}
 	}
 }
