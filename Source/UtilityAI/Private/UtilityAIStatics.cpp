@@ -7,6 +7,8 @@
 #include "TernaryOperation.h"
 #include "MultiOperation.h"
 #include "Predicate.h"
+#include "Agent.h"
+#include "AIController.h"
 
 UExpression* UUtilityAIStatics::CreateUnaryOperation(TSubclassOf<UUnaryOperation> Class, UExpression* Operand)
 {
@@ -39,6 +41,11 @@ UExpression* UUtilityAIStatics::CreateMultiOperation(TSubclassOf<UMultiOperation
 UExpression* UUtilityAIStatics::CreatePredicate(TSubclassOf<UPredicate> Class)
 {
 	return NewObject<UExpression>(GetOuter(), Class);
+}
+
+AAIController* UUtilityAIStatics::AsAIController(const TScriptInterface<IAgent>& Agent)
+{
+	return Cast<AAIController>(Agent.GetObject());
 }
 
 UObject* UUtilityAIStatics::GetOuter()
