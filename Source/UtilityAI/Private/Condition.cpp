@@ -9,7 +9,7 @@ float FCondition::Evaluate(const TScriptInterface<IAgent>& Agent)
 {
 	if (Predicate == nullptr)
 	{
-		Predicate = NewObject<UPredicate>(Agent.GetObject(), PredicateClass, TEXT("Predicate"));
+		Predicate = NewObject<UPredicate>(Agent.GetObject(), PredicateClass);
 	}
 	return Predicate && Predicate->Evaluate(Agent) ? SuccessValue : FailureValue;
 }

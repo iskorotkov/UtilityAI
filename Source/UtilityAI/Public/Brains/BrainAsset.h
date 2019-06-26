@@ -26,5 +26,6 @@ private:
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<UAction>> ActionClasses;
 
+	UPROPERTY(VisibleInstanceOnly)
 	TArray<UAction*> Actions;
 };
