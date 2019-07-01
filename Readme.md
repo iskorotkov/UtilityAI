@@ -7,6 +7,7 @@
 - [ ] replace all usings of 0.0 and 1.0 with constants from UtilityAIConstants
 - [ ] mark methods and classes "final" where possible
 - [ ] check UPROPERTY macros with EditAnywhere/VisibleAnywhere and replace in with more strict specifiers
+- [ ] add logging (with custom categories)
 
 # Doc
 
