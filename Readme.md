@@ -9,6 +9,7 @@
 - [ ] check UPROPERTY macros with EditAnywhere/VisibleAnywhere and replace in with more strict specifiers
 - [ ] add logging (with custom categories)
 - [ ] multioperations can get invalid number of arguments - fix
+- [ ] array of conditions keeps collapsing when adding new conditions
 
 ## Propositions
 
@@ -16,6 +17,9 @@
 - [ ] add "DoNothing" action
 - [ ] add AlwaysTrue and AlwaysFalse predicates (for testing purposes?)
 - [ ] add max value - any action that is rated above certain limit is executed immediately and the rest actions are ignored
+- [ ] add base value for action (instead of 0.0f by default)
+- [ ] add flag - if action is selected twice in a row ignore is the second time
+- [ ] IAgent should give access to AgentData object that should work like blackboard
 
 # Doc
 
