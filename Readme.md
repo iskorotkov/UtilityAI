@@ -15,6 +15,7 @@
 - [ ] add "cut out" value - if there is no action rated below given limit, agent does nothing
 - [ ] add "DoNothing" action
 - [ ] add AlwaysTrue and AlwaysFalse predicates (for testing purposes?)
+- [ ] add max value - any action that is rated above certain limit is executed immediately and the rest actions are ignored
 
 # Doc
 
