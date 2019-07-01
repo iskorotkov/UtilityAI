@@ -16,7 +16,13 @@ class UTILITYAI_API UMultiOperation : public UOperation
 
 protected:
 	UFUNCTION(BlueprintCallable)
+	UExpression* Nth(int N) const;
+
+	UFUNCTION(BlueprintCallable)
 	const TArray<UExpression*>& Operands() const;
+
+	UFUNCTION(BlueprintCallable)
+	bool NthResult(const TScriptInterface<IAgent>& Agent, int N) const;
 
 	UFUNCTION(BlueprintCallable)
 	TArray<bool> OperandsResult(const TScriptInterface<IAgent>& Agent) const;

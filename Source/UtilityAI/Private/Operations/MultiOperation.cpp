@@ -2,9 +2,19 @@
 
 #include "MultiOperation.h"
 
+UExpression* UMultiOperation::Nth(int N) const
+{
+	return Ops[N];
+}
+
 const TArray<UExpression*>& UMultiOperation::Operands() const
 {
 	return Ops;
+}
+
+bool UMultiOperation::NthResult(const TScriptInterface<IAgent>& Agent, int N) const
+{
+	return Nth(N)->Evaluate(Agent);
 }
 
 TArray<bool> UMultiOperation::OperandsResult(const TScriptInterface<IAgent>& Agent) const
