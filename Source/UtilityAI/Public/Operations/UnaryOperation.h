@@ -14,6 +14,13 @@ class UTILITYAI_API UUnaryOperation : public UOperation
 {
 	GENERATED_BODY()
 
+protected:
+	UFUNCTION(BlueprintCallable)
+	UExpression* First() const;
+
+	UFUNCTION(BlueprintCallable)
+	bool FirstResult(const TScriptInterface<IAgent>& Agent) const;
+
 private:
 	UPROPERTY()
 	UExpression* Operand;

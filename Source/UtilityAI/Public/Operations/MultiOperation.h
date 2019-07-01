@@ -14,7 +14,14 @@ class UTILITYAI_API UMultiOperation : public UOperation
 {
 	GENERATED_BODY()
 
+protected:
+	UFUNCTION(BlueprintCallable)
+	const TArray<UExpression*>& Operands() const;
+
+	UFUNCTION(BlueprintCallable)
+	TArray<bool> OperandsResult(const TScriptInterface<IAgent>& Agent) const;
+
 private:
 	UPROPERTY()
-	TArray<UExpression*> Operands;
+	TArray<UExpression*> Ops;
 };
