@@ -34,10 +34,11 @@ UExpression* UUtilityAIStatics::CreateTernaryOperation(const TSubclassOf<UTernar
 	return Op;
 }
 
-UExpression* UUtilityAIStatics::CreateMultiOperation(const TSubclassOf<UMultiOperation> Class, TArray<UExpression*> Operands)
+UExpression* UUtilityAIStatics::CreateMultiOperation(const TSubclassOf<UMultiOperation> Class, const TArray<UExpression*> Operands, const TArray<int> Arguments)
 {
 	const auto Op = NewObject<UMultiOperation>(GetOuter(), Class, TEXT("Multi operation"));
 	check(Op);
+	Op->Init(Operands, Arguments);
 	return Op;
 }
 

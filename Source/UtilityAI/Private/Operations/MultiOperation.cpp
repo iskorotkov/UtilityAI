@@ -27,3 +27,24 @@ TArray<bool> UMultiOperation::OperandsResult(const TScriptInterface<IAgent>& Age
 	}
 	return Results;
 }
+
+int UMultiOperation::NthArg(const int N) const
+{
+	return Args[N];
+}
+
+int UMultiOperation::ArgsNum() const
+{
+	return Args.Num();
+}
+
+const TArray<int>& UMultiOperation::Arguments() const
+{
+	return Args;
+}
+
+void UMultiOperation::Init(const TArray<UExpression*>& O, const TArray<int>& A)
+{
+	Ops = O;
+	Args = A;
+}

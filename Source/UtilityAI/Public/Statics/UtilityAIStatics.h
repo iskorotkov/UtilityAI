@@ -35,7 +35,7 @@ public:
 	static UExpression* CreateTernaryOperation(TSubclassOf<UTernaryOperation> Class, UExpression* Operand1, UExpression* Operand2, UExpression* Operand3);
 
 	UFUNCTION(Category="Utility AI|Statics", BlueprintPure)
-	static UExpression* CreateMultiOperation(TSubclassOf<UMultiOperation> Class, TArray<UExpression*> Operands);
+	static UExpression* CreateMultiOperation(TSubclassOf<UMultiOperation> Class, TArray<UExpression*> Operands, TArray<int> Arguments);
 
 	UFUNCTION(Category="Utility AI|Statics", BlueprintPure)
 	static UExpression* CreatePredicate(TSubclassOf<UPredicate> Class);

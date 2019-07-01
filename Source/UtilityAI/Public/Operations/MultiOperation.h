@@ -14,12 +14,19 @@ class UTILITYAI_API UMultiOperation : public UOperation
 {
 	GENERATED_BODY()
 
+	friend class UUtilityAIStatics;
+
 protected:
+
+	// Operands
+
 	UFUNCTION(BlueprintCallable)
 	UExpression* Nth(int N) const;
 
 	UFUNCTION(BlueprintCallable)
 	const TArray<UExpression*>& Operands() const;
+
+	// Results
 
 	UFUNCTION(BlueprintCallable)
 	bool NthResult(const TScriptInterface<IAgent>& Agent, int N) const;
@@ -27,7 +34,22 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	TArray<bool> OperandsResult(const TScriptInterface<IAgent>& Agent) const;
 
+	// Arguments
+
+	UFUNCTION(BlueprintCallable)
+	int NthArg(int N) const;
+
+	UFUNCTION(BlueprintCallable)
+	int ArgsNum() const;
+
+	UFUNCTION(BlueprintCallable)
+	const TArray<int>& Arguments() const;
+
 private:
 	UPROPERTY()
 	TArray<UExpression*> Ops;
+
+	TArray<int> Args;
+
+	void Init(const TArray<UExpression*>& O, const TArray<int>& A);
 };
