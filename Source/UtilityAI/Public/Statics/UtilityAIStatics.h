@@ -45,6 +45,9 @@ public:
 	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
 	static AAIController* AsAIController(const TScriptInterface<IAgent>& Agent);
 
+	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
+	static AActor* AsActor(const TScriptInterface<IAgent>& Agent);
+
 private:
 	static UObject* GetOuter();
 };

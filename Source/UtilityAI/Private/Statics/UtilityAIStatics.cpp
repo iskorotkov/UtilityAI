@@ -48,6 +48,11 @@ AAIController* UUtilityAIStatics::AsAIController(const TScriptInterface<IAgent>&
 	return Cast<AAIController>(Agent.GetObject());
 }
 
+AActor* UUtilityAIStatics::AsActor(const TScriptInterface<IAgent>& Agent)
+{
+	return Cast<AActor>(Agent.GetObject());
+}
+
 UObject* UUtilityAIStatics::GetOuter()
 {
 	return Cast<UObject>(GetTransientPackage());
