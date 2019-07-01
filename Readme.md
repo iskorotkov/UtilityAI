@@ -8,6 +8,7 @@
 - [ ] mark methods and classes "final" where possible
 - [ ] check UPROPERTY macros with EditAnywhere/VisibleAnywhere and replace in with more strict specifiers
 - [ ] add logging (with custom categories)
+- [ ] multioperations can get invalid number of arguments - fix
 
 # Doc
 
