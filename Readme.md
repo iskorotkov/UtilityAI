@@ -10,6 +10,12 @@
 - [ ] add logging (with custom categories)
 - [ ] multioperations can get invalid number of arguments - fix
 
+## Propositions
+
+- [ ] add "cut out" value - if there is no action rated below given limit, agent does nothing
+- [ ] add "DoNothing" action
+- [ ] add AlwaysTrue and AlwaysFalse predicates (for testing purposes?)
+
 # Doc
 
 I need to write an actual doc!
