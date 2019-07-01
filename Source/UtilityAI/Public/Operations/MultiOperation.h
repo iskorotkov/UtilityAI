@@ -32,7 +32,7 @@ protected:
 	bool NthResult(const TScriptInterface<IAgent>& Agent, int N) const;
 
 	UFUNCTION(BlueprintCallable)
-	TArray<bool> OperandsResult(const TScriptInterface<IAgent>& Agent) const;
+	TArray<bool> OperandsResults(const TScriptInterface<IAgent>& Agent) const;
 
 	// Arguments
 

@@ -17,7 +17,7 @@ bool UMultiOperation::NthResult(const TScriptInterface<IAgent>& Agent, int N) co
 	return Nth(N)->Evaluate(Agent);
 }
 
-TArray<bool> UMultiOperation::OperandsResult(const TScriptInterface<IAgent>& Agent) const
+TArray<bool> UMultiOperation::OperandsResults(const TScriptInterface<IAgent>& Agent) const
 {
 	TArray<bool> Results;
 	for (const auto Op : Ops)
