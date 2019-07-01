@@ -14,6 +14,8 @@ class UTILITYAI_API UTernaryOperation : public UOperation
 {
 	GENERATED_BODY()
 
+	friend class UUtilityAIStatics;
+
 protected:
 	UFUNCTION(BlueprintCallable)
 	UExpression* First() const;
@@ -42,4 +44,6 @@ private:
 
 	UPROPERTY()
 	UExpression* Operand3;
+
+	void Init(UExpression* F, UExpression* S, UExpression* T);
 };

@@ -31,3 +31,10 @@ bool UTernaryOperation::ThirdResult(const TScriptInterface<IAgent>& Agent) const
 {
 	return Third()->Evaluate(Agent);
 }
+
+void UTernaryOperation::Init(UExpression* F, UExpression* S, UExpression* T)
+{
+	Operand1 = F;
+	Operand2 = S;
+	Operand3 = T;
+}

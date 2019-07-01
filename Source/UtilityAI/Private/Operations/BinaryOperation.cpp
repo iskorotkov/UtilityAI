@@ -21,3 +21,9 @@ bool UBinaryOperation::SecondResult(const TScriptInterface<IAgent>& Agent) const
 {
 	return Second()->Evaluate(Agent);
 }
+
+void UBinaryOperation::Init(UExpression* F, UExpression* S)
+{
+	Operand1 = F;
+	Operand2 = S;
+}

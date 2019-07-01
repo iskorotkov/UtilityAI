@@ -11,3 +11,8 @@ bool UUnaryOperation::FirstResult(const TScriptInterface<IAgent>& Agent) const
 {
 	return First()->Evaluate(Agent);
 }
+
+void UUnaryOperation::Init(UExpression* F)
+{
+	Operand = F;
+}
