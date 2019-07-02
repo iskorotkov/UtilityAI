@@ -1,30 +1,36 @@
 # TODO
 
-- [ ] provide methods for direct creation of NOT, OR, AND, etc operations (do not use CreateXXXOperation methods)
-- [x] arrays of conditions and actions should not allow to modify its contents
-- [x] is there a way to remove condition class and use predicate/expression class instead?
-- [x] add AsAIController() to IAgent
+## Cleanup
+
 - [ ] replace all usings of 0.0 and 1.0 with constants from UtilityAIConstants
 - [ ] mark methods and classes "final" where possible
 - [ ] check UPROPERTY macros with EditAnywhere/VisibleAnywhere and replace in with more strict specifiers
-- [ ] add logging (with custom categories)
+
+## Fixes and enhancements
+
+- [ ] provide methods for direct creation of NOT, OR, AND, etc operations (do not use CreateXXXOperation methods)
 - [ ] multioperations can get invalid number of arguments - fix
 - [ ] array of conditions keeps collapsing when adding new conditions
 
-## Propositions
+## Improvements
 
 - [ ] add "cut out" value - if there is no action rated below given limit, agent does nothing
 - [ ] add "DoNothing" action
+- [ ] add logging (with custom categories)
 - [ ] add AlwaysTrue and AlwaysFalse predicates (for testing purposes?)
 - [ ] add max value - any action that is rated above certain limit is executed immediately and the rest actions are ignored
 - [ ] add base value for action (instead of 0.0f by default)
-- [x] add flag - if action is selected twice in a row ignore is the second time
+
+## Features
+
 - [ ] IAgent should give access to AgentData object that should work like blackboard
 
-# Doc
+## Propositions
+
+## Docs
 
 I need to write an actual doc!
 
-# Contribution
+## Contribution
 
 Create a dedicated file and move this section there!
