@@ -25,13 +25,13 @@ private:
 	UPROPERTY(EditAnywhere, meta=(InlineEditConditionToggle))
 	bool bHasMinValueToAct = false;
 
-	UPROPERTY(EditAnywhere, meta=(EditCondition="bHasMinValueToAct"))
-	float MinValueToAct = 0.0f;
+	UPROPERTY(EditAnywhere, meta=(EditCondition=bHasMinValueToAct))
+	float MinValueToAct = 0.05f;
 
 	UPROPERTY(EditAnywhere, meta = (InlineEditConditionToggle))
 	bool bHasSkipOtherActionsValue = false;
 
-	UPROPERTY(EditAnywhere, meta = (EditCondition = "bHasSkipOthersValue"))
+	UPROPERTY(EditAnywhere, meta = (EditCondition = bHasSkipOtherActionsValue))
 	float SkipOtherActionsValue = 0.95f;
 
 	UPROPERTY(EditAnywhere)
