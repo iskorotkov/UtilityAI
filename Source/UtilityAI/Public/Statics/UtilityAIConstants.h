@@ -20,4 +20,10 @@ public:
 
 	UFUNCTION(Category = "Utility AI|Constants", BlueprintPure)
 	static float MaxActionRating();
+
+	UFUNCTION(Category = "Utility AI|Constants", BlueprintPure)
+	static float AbsoluteMin();
+
+	UFUNCTION(Category = "Utility AI|Constants", BlueprintPure)
+	static float AbsoluteMax();
 };

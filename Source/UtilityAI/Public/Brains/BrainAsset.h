@@ -16,13 +16,24 @@ class UTILITYAI_API UBrainAsset : public UObject
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	UFUNCTION(BlueprintCallable)
 	UAction* SelectAction(const TScriptInterface<IAgent>& Agent);
-	virtual UAction* SelectAction_Implementation(const TScriptInterface<IAgent>& Agent);
 
 	void CreateActions(const TScriptInterface<IAgent>& Agent);
 
 private:
+	UPROPERTY(EditAnywhere, meta=(InlineEditConditionToggle))
+	bool bHasMinValueToAct = false;
+
+	UPROPERTY(EditAnywhere, meta=(EditCondition="bHasMinValueToAct"))
+	float MinValueToAct = 0.0f;
+
+	UPROPERTY(EditAnywhere, meta = (InlineEditConditionToggle))
+	bool bHasSkipOtherActionsValue = false;
+
+	UPROPERTY(EditAnywhere, meta = (EditCondition = "bHasSkipOthersValue"))
+	float SkipOtherActionsValue = 0.95f;
+
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<UAction>> ActionClasses;
 
@@ -31,4 +42,8 @@ private:
 
 	UPROPERTY()
 	UAction* LastAction;
+
+	bool ShouldSkipOtherActions(float Value) const;
+	bool ShouldSkipRepeatingAction(UAction* Action) const;
+	bool ShouldSkipLowRankedAction(float Value) const;
 };

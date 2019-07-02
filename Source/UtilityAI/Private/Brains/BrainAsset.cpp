@@ -3,31 +3,59 @@
 #include "BrainAsset.h"
 #include "Action.h"
 #include "SubclassOf.h"
+#include "UtilityAIConstants.h"
 
-UAction* UBrainAsset::SelectAction_Implementation(const TScriptInterface<IAgent>& Agent)
+bool UBrainAsset::ShouldSkipOtherActions(const float Value) const
 {
-	UAction* Action = nullptr;
-	// TODO: magic number (introduce UtilityAIConstants class)
-	auto Value = -1.f;
-	CreateActions(Agent);
-	for (const auto A : Actions)
+	if (bHasSkipOtherActionsValue && Value > SkipOtherActionsValue)
 	{
-		check(A);
-		const auto V = A->Evaluate(Agent);
-		if (V > Value)
+		return true;
+	}
+	return false;
+}
+
+bool UBrainAsset::ShouldSkipRepeatingAction(UAction* Action) const
+{
+	return Action == LastAction
+	&& Action
+	&& Action->IgnoreIfCalledTwice();
+}
+
+bool UBrainAsset::ShouldSkipLowRankedAction(const float Value) const
+{
+	return bHasMinValueToAct && MinValueToAct > Value;
+}
+
+UAction* UBrainAsset::SelectAction(const TScriptInterface<IAgent>& Agent)
+{
+	UAction* BestAction = nullptr;
+	auto BestValue = UUtilityAIConstants::AbsoluteMin();
+	CreateActions(Agent);
+	for (const auto Action : Actions)
+	{
+		check(Action);
+		const auto Value = Action->Evaluate(Agent);
+		if (Value > BestValue)
 		{
-			Value = V;
-			Action = A;
+			BestValue = Value;
+			BestAction = Action;
+			if (ShouldSkipOtherActions(BestValue))
+			{
+				break;
+			}
 		}
 	}
-	if (Action == LastAction 
-		&& Action 
-		&& Action->IgnoreIfCalledTwice())
+	if (ShouldSkipRepeatingAction(BestAction))
 	{
 		return nullptr;
 	}
-	LastAction = Action;
-	return Action;
+	if (ShouldSkipLowRankedAction(BestValue))
+	{
+		LastAction = nullptr;
+		return nullptr;
+	}
+	LastAction = BestAction;
+	return BestAction;
 }
 
 void UBrainAsset::CreateActions(const TScriptInterface<IAgent>& Agent)
