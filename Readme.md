@@ -16,13 +16,13 @@
 
 - [ ] add "cut out" value - if there is no action rated below given limit, agent does nothing
 - [ ] add "DoNothing" action
-- [ ] add logging (with custom categories)
 - [ ] add AlwaysTrue and AlwaysFalse predicates (for testing purposes?)
 - [ ] add max value - any action that is rated above certain limit is executed immediately and the rest actions are ignored
 - [ ] add base value for action (instead of 0.0f by default)
 
 ## Features
 
+- [ ] add logging (with custom categories)
 - [ ] IAgent should give access to AgentData object that should work like blackboard
 
 ## Propositions
