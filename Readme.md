@@ -18,7 +18,7 @@
 - [ ] add AlwaysTrue and AlwaysFalse predicates (for testing purposes?)
 - [ ] add max value - any action that is rated above certain limit is executed immediately and the rest actions are ignored
 - [ ] add base value for action (instead of 0.0f by default)
-- [ ] add flag - if action is selected twice in a row ignore is the second time
+- [x] add flag - if action is selected twice in a row ignore is the second time
 - [ ] IAgent should give access to AgentData object that should work like blackboard
 
 # Doc

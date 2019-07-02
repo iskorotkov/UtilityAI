@@ -17,3 +17,8 @@ float UAction::Evaluate(const TScriptInterface<IAgent>& Agent)
 void UAction::Run_Implementation(const TScriptInterface<IAgent>& Agent) const
 {
 }
+
+bool UAction::IgnoreIfCalledTwice() const
+{
+	return bIgnoreIfCalledTwice;
+}

@@ -23,9 +23,15 @@ public:
 	void Run(const TScriptInterface<IAgent>& Agent) const;
 	virtual void Run_Implementation(const TScriptInterface<IAgent>& Agent) const;
 
+	UFUNCTION(BlueprintCallable)
+	bool IgnoreIfCalledTwice() const;
+
 	// TODO: override GetDesc()
 
 private:
+	UPROPERTY(EditAnywhere)
+	bool bIgnoreIfCalledTwice = false;
+
 	UPROPERTY(EditAnywhere)
 	TArray<FCondition> Conditions;
 };

@@ -20,6 +20,13 @@ UAction* UBrainAsset::SelectAction_Implementation(const TScriptInterface<IAgent>
 			Action = A;
 		}
 	}
+	if (Action == LastAction 
+		&& Action 
+		&& Action->IgnoreIfCalledTwice())
+	{
+		return nullptr;
+	}
+	LastAction = Action;
 	return Action;
 }
 

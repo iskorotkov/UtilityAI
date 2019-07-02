@@ -28,4 +28,7 @@ private:
 
 	UPROPERTY()
 	TArray<UAction*> Actions;
+
+	UPROPERTY()
+	UAction* LastAction;
 };
