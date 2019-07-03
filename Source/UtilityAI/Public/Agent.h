@@ -6,6 +6,7 @@
 #include "UObject/Interface.h"
 #include "Agent.generated.h"
 
+class UAgentData;
 class UBehaviorTree;
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
@@ -25,4 +26,8 @@ class UTILITYAI_API IAgent
 public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void RunBehavior(const UBehaviorTree* Behavior);
+
+	// TODO: is there an easier way to create and access agent data object?
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	UAgentData* GetAgentData();
 };
