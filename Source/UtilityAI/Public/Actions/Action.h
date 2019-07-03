@@ -16,6 +16,8 @@ class UTILITYAI_API UAction : public UObject
 	GENERATED_BODY()
 
 public:
+	UAction();
+
 	UFUNCTION(BlueprintCallable)
 	float Evaluate(const TScriptInterface<IAgent>& Agent);
 
@@ -26,9 +28,10 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool IgnoreIfCalledTwice() const;
 
-	// TODO: override GetDesc()
-
 private:
+	UPROPERTY(EditAnywhere)
+	float BaseValue;
+
 	UPROPERTY(EditAnywhere)
 	bool bIgnoreIfCalledTwice = false;
 

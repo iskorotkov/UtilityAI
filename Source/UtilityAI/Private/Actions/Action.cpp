@@ -5,6 +5,11 @@
 #include "Condition.h"
 #include "UtilityAIConstants.h"
 
+UAction::UAction()
+{
+	BaseValue = UUtilityAIConstants::MinActionRating();
+}
+
 float UAction::Evaluate(const TScriptInterface<IAgent>& Agent)
 {
 	auto Result = UUtilityAIConstants::MinActionRating();
