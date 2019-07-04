@@ -26,11 +26,10 @@ bool UBrainAsset::ShouldSkipLowRankedAction(const float Value) const
 	return bHasMinValueToAct && MinValueToAct > Value;
 }
 
-UAction* UBrainAsset::SelectAction(const TScriptInterface<IAgent>& Agent)
+UAction* UBrainAsset::GetBestEvaluatedAction(const TScriptInterface<IAgent>& Agent)
 {
 	UAction* BestAction = nullptr;
 	auto BestValue = UUtilityAIConstants::AbsoluteMin();
-	CreateActions(Agent);
 	for (const auto Action : Actions)
 	{
 		check(Action);
@@ -58,13 +57,52 @@ UAction* UBrainAsset::SelectAction(const TScriptInterface<IAgent>& Agent)
 	return BestAction;
 }
 
+UAction* UBrainAsset::SelectAction(const TScriptInterface<IAgent>& Agent)
+{
+	CreateActions(Agent);
+	ExecutePreActions(Agent);
+	const auto BestAction = GetBestEvaluatedAction(Agent);
+	ExecutePostActions(Agent);
+	return BestAction;
+}
+
 void UBrainAsset::CreateActions(const TScriptInterface<IAgent>& Agent)
 {
-	if (ActionClasses.Num() > Actions.Num())
+	if (Actions.Num() == 0)
 	{
 		for (const auto& Class : ActionClasses)
 		{
 			Actions.Add(NewObject<UAction>(Agent.GetObject(), Class));
 		}
+	}
+	if (PreActions.Num() == 0)
+	{
+		for (const auto& Class : PreActionClasses)
+		{
+			PreActions.Add(NewObject<UAction>(Agent.GetObject(), Class));
+		}
+	}
+	if (PostActions.Num() == 0)
+	{
+		for (const auto& Class : PostActionClasses)
+		{
+			PostActions.Add(NewObject<UAction>(Agent.GetObject(), Class));
+		}
+	}
+}
+
+void UBrainAsset::ExecutePreActions(const TScriptInterface<IAgent>& Agent)
+{
+	for (const auto Action : PreActions)
+	{
+		Action->Run(Agent);
+	}
+}
+
+void UBrainAsset::ExecutePostActions(const TScriptInterface<IAgent>& Agent)
+{
+		for (const auto Action : PostActions)
+	{
+		Action->Run(Agent);
 	}
 }

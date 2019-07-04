@@ -19,31 +19,42 @@ public:
 	UFUNCTION(BlueprintCallable)
 	UAction* SelectAction(const TScriptInterface<IAgent>& Agent);
 
-	void CreateActions(const TScriptInterface<IAgent>& Agent);
-
 private:
-	UPROPERTY(EditAnywhere, meta=(InlineEditConditionToggle))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, meta=(InlineEditConditionToggle))
 	bool bHasMinValueToAct = false;
 
-	UPROPERTY(EditAnywhere, meta=(EditCondition=bHasMinValueToAct))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, meta=(EditCondition=bHasMinValueToAct))
 	float MinValueToAct = 0.05f;
 
-	UPROPERTY(EditAnywhere, meta = (InlineEditConditionToggle))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, meta = (InlineEditConditionToggle))
 	bool bHasSkipOtherActionsValue = false;
 
-	UPROPERTY(EditAnywhere, meta = (EditCondition = bHasSkipOtherActionsValue))
+	UPROPERTY(EditAnywhere, AdvancedDisplay, meta = (EditCondition = bHasSkipOtherActionsValue))
 	float SkipOtherActionsValue = 0.95f;
 
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<UAction>> ActionClasses;
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, AdvancedDisplay)
+	TArray<TSubclassOf<UAction>> PreActionClasses;
+
+	UPROPERTY(EditAnywhere, AdvancedDisplay)
+	TArray<TSubclassOf<UAction>> PostActionClasses;
+
 	TArray<UAction*> Actions;
+	TArray<UAction*> PreActions;
+	TArray<UAction*> PostActions;
 
 	UPROPERTY()
 	UAction* LastAction;
 
+	void CreateActions(const TScriptInterface<IAgent>& Agent);
+	void ExecutePreActions(const TScriptInterface<IAgent>& Agent);
+	void ExecutePostActions(const TScriptInterface<IAgent>& Agent);
+
 	bool ShouldSkipOtherActions(float Value) const;
 	bool ShouldSkipRepeatingAction(UAction* Action) const;
 	bool ShouldSkipLowRankedAction(float Value) const;
+
+	UAction* GetBestEvaluatedAction(const TScriptInterface<IAgent>& Agent);
 };
