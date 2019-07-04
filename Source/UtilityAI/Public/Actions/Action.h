@@ -29,10 +29,10 @@ public:
 	bool IgnoreIfCalledTwice() const;
 
 private:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, AdvancedDisplay)
 	float BaseValue;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, AdvancedDisplay)
 	bool bIgnoreIfCalledTwice = false;
 
 	UPROPERTY(EditAnywhere)
