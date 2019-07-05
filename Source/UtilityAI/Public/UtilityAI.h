@@ -11,3 +11,12 @@ public:
 	void StartupModule() override;
 	void ShutdownModule() override;
 };
+
+DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Actions, Log, All)
+DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Brains, Log, All)
+DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Predicates, Log, All)
+DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Operations, Log, All)
+DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Components, Log, All)
+DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Statics, Log, All)
+DECLARE_LOG_CATEGORY_EXTERN(UtilityAI, Log, All)
+

@@ -4,6 +4,7 @@
 #include "Agent.h"
 #include "Condition.h"
 #include "UtilityAIConstants.h"
+#include "UtilityAI.h"
 
 UAction::UAction()
 {
@@ -17,11 +18,13 @@ float UAction::Evaluate(const TScriptInterface<IAgent>& Agent)
 	{
 		Result += Condition.Evaluate(Agent);
 	}
-	return FMath::Clamp(Result, UUtilityAIConstants::MinActionRating(), UUtilityAIConstants::MaxActionRating());
+	Result = FMath::Clamp(Result, UUtilityAIConstants::MinActionRating(), UUtilityAIConstants::MaxActionRating());
+	return Result;
 }
 
 void UAction::Run_Implementation(const TScriptInterface<IAgent>& Agent) const
 {
+	UE_LOG(UtilityAI_Actions, Warning, TEXT("Action %s that has no overriden behavior has been run"), *GetName());
 }
 
 bool UAction::IgnoreIfCalledTwice() const

@@ -18,3 +18,11 @@ void FUtilityAIModule::ShutdownModule()
 #undef LOCTEXT_NAMESPACE
 	
 IMPLEMENT_MODULE(FUtilityAIModule, UtilityAI)
+
+DEFINE_LOG_CATEGORY(UtilityAI_Actions)
+DEFINE_LOG_CATEGORY(UtilityAI_Brains)
+DEFINE_LOG_CATEGORY(UtilityAI_Predicates)
+DEFINE_LOG_CATEGORY(UtilityAI_Operations)
+DEFINE_LOG_CATEGORY(UtilityAI_Components)
+DEFINE_LOG_CATEGORY(UtilityAI_Statics)
+DEFINE_LOG_CATEGORY(UtilityAI)

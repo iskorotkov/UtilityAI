@@ -4,14 +4,11 @@
 #include "Action.h"
 #include "SubclassOf.h"
 #include "UtilityAIConstants.h"
+#include "UtilityAI.h"
 
 bool UBrainAsset::ShouldSkipOtherActions(const float Value) const
 {
-	if (bHasSkipOtherActionsValue && Value > SkipOtherActionsValue)
-	{
-		return true;
-	}
-	return false;
+	return bHasSkipOtherActionsValue && Value > SkipOtherActionsValue;
 }
 
 bool UBrainAsset::ShouldSkipRepeatingAction(UAction* Action) const
@@ -101,7 +98,7 @@ void UBrainAsset::ExecutePreActions(const TScriptInterface<IAgent>& Agent)
 
 void UBrainAsset::ExecutePostActions(const TScriptInterface<IAgent>& Agent)
 {
-		for (const auto Action : PostActions)
+	for (const auto Action : PostActions)
 	{
 		Action->Run(Agent);
 	}
