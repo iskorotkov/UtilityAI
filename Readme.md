@@ -19,9 +19,9 @@
 ## Features
 
 - [ ] add logging (with custom categories)
-- [ ] IAgent should give access to AgentData object that should work like blackboard
+- [x] IAgent should give access to AgentData object that should work like blackboard
 - [ ] add description to actions/predicates
-- [ ] add preparation and cleanup actions to brain asset
+- [x] add preparation and cleanup actions to brain asset
 - [ ] add multiple passes to Utility Ai component (each pass is a single brain asset)
 - [ ] add action that can execute another brain
 
