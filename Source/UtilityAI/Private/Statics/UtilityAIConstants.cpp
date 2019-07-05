@@ -12,12 +12,12 @@ float UUtilityAIConstants::MaxActionRating()
 	return 1.0f;
 }
 
-float UUtilityAIConstants::AbsoluteMax()
+float UUtilityAIConstants::AbsoluteMin()
 {
 	return MinActionRating() - 1.f;
 }
 
-float UUtilityAIConstants::AbsoluteMin()
+float UUtilityAIConstants::AbsoluteMax()
 {
 	return MaxActionRating() + 1.f;
 }

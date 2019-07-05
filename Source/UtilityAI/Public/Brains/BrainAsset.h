@@ -55,6 +55,7 @@ private:
 	bool ShouldSkipOtherActions(float Value) const;
 	bool ShouldSkipRepeatingAction(UAction* Action) const;
 	bool ShouldSkipLowRankedAction(float Value) const;
+	bool ShouldCreateActions() const;
 
 	UAction* GetBestEvaluatedAction(const TScriptInterface<IAgent>& Agent);
 };

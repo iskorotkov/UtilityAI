@@ -23,6 +23,11 @@ bool UBrainAsset::ShouldSkipLowRankedAction(const float Value) const
 	return bHasMinValueToAct && MinValueToAct > Value;
 }
 
+bool UBrainAsset::ShouldCreateActions() const
+{
+	return Actions.Num() == 0;
+}
+
 UAction* UBrainAsset::GetBestEvaluatedAction(const TScriptInterface<IAgent>& Agent)
 {
 	UAction* BestAction = nullptr;
@@ -65,22 +70,16 @@ UAction* UBrainAsset::SelectAction(const TScriptInterface<IAgent>& Agent)
 
 void UBrainAsset::CreateActions(const TScriptInterface<IAgent>& Agent)
 {
-	if (Actions.Num() == 0)
+	if (ShouldCreateActions())
 	{
 		for (const auto& Class : ActionClasses)
 		{
 			Actions.Add(NewObject<UAction>(Agent.GetObject(), Class));
 		}
-	}
-	if (PreActions.Num() == 0)
-	{
 		for (const auto& Class : PreActionClasses)
 		{
 			PreActions.Add(NewObject<UAction>(Agent.GetObject(), Class));
 		}
-	}
-	if (PostActions.Num() == 0)
-	{
 		for (const auto& Class : PostActionClasses)
 		{
 			PostActions.Add(NewObject<UAction>(Agent.GetObject(), Class));
