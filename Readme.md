@@ -16,6 +16,10 @@
 
 - [ ] add AlwaysTrue and AlwaysFalse predicates (for testing purposes?)
 
+## Deprecation
+
+- [ ] Remove TicTacToe example (because it's unfinished)
+
 ## Features
 
 - [ ] add logging (with custom categories)
