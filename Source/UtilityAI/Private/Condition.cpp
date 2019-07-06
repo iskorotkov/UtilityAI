@@ -13,3 +13,8 @@ float FCondition::Evaluate(const TScriptInterface<IAgent>& Agent)
 	}
 	return Predicate && Predicate->Evaluate(Agent) ? SuccessValue : FailureValue;
 }
+
+FString FCondition::GetName() const
+{
+	return Name;
+}

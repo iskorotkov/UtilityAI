@@ -19,9 +19,14 @@ struct UTILITYAI_API FCondition
 public:
 	float Evaluate(const TScriptInterface<IAgent>& Agent);
 
+	FString GetName() const;
+
 private:
 	UPROPERTY()
 	UPredicate* Predicate = nullptr;
+
+	UPROPERTY(EditAnywhere)
+	FString Name;
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UPredicate> PredicateClass;

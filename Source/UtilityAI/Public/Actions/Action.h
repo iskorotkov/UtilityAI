@@ -15,14 +15,16 @@ class UTILITYAI_API UAction : public UObject
 {
 	GENERATED_BODY()
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActionSignature, const FString&, ActionName, float, Value);
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FConditionSignature, const FString&, ConditionName, float, Value);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActionSignature, FString, ActionName, float, Value);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FActionRunSignature, FString, ActionName);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FConditionSignature, FString, ConditionName, float, Value);
 
 public:
 	UAction();
 
 	FActionSignature OnEvaluated;
-	FActionSignature OnRun;
+
+	FActionRunSignature OnRun;
 
 	FConditionSignature OnConditionEvaluated;
 

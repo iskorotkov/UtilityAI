@@ -36,24 +36,37 @@ UAction* UBrainAsset::GetBestEvaluatedAction(const TScriptInterface<IAgent>& Age
 	{
 		check(Action);
 		const auto Value = Action->Evaluate(Agent);
+		OnActionRanked.Broadcast(Action->GetName(), Value);
 		if (Value > BestValue)
 		{
 			BestValue = Value;
 			BestAction = Action;
 			if (ShouldSkipOtherActions(BestValue))
 			{
+				OnOtherActionsSkipped.Broadcast(BestAction->GetName(), Value);
 				break;
 			}
 		}
 	}
-	if (ShouldSkipRepeatingAction(BestAction))
+	if (BestAction)
 	{
-		return nullptr;
+		OnActionSelected.Broadcast(BestAction->GetName(), BestValue);
+		if (ShouldSkipRepeatingAction(BestAction))
+		{
+			OnRepeatingActionSkipped.Broadcast(BestAction->GetName(), BestValue);
+			return nullptr;
+		}
+		if (ShouldSkipLowRankedAction(BestValue))
+		{
+			OnLowRankedActionSkipped.Broadcast(BestAction->GetName(), BestValue);
+			LastAction = nullptr;
+			return nullptr;
+		}
 	}
-	if (ShouldSkipLowRankedAction(BestValue))
+	else
 	{
-		LastAction = nullptr;
-		return nullptr;
+		// TODO: remove constants
+		OnActionSelected.Broadcast("None", 0.f);
 	}
 	LastAction = BestAction;
 	return BestAction;

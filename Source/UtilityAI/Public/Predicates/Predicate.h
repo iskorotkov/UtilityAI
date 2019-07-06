@@ -13,9 +13,4 @@ UCLASS(BlueprintType, Abstract, Blueprintable)
 class UTILITYAI_API UPredicate : public UExpression
 {
 	GENERATED_BODY()
-
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FPredicateSignature, const FString&, PredicateName, bool, Success);
-
-public:
-	FPredicateSignature OnPredicateEvaluated;
 };

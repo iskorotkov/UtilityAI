@@ -15,9 +15,10 @@ class UTILITYAI_API UBrainAsset : public UObject
 {
 	GENERATED_BODY()
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActionSignature, const FString&, ActionName, float, Value);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActionSignature, FString, ActionName, float, Value);
 
 public:
+	// TODO: too much delegates? use less delegates and pass additional data in them
 	FActionSignature OnActionRanked;
 	FActionSignature OnActionSelected;
 	FActionSignature OnLowRankedActionSkipped;
