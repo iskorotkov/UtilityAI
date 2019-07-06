@@ -15,7 +15,15 @@ class UTILITYAI_API UBrainAsset : public UObject
 {
 	GENERATED_BODY()
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActionSignature, const FString&, ActionName, float, ActionValue)
+
 public:
+	FActionSignature OnActionRanked;
+	FActionSignature OnActionSelected;
+	FActionSignature OnLowRankedActionSkipped;
+	FActionSignature OnRepeatingActionSkipped;
+	FActionSignature OnOtherActionsSkipped;
+
 	UFUNCTION(BlueprintCallable)
 	UAction* SelectAction(const TScriptInterface<IAgent>& Agent);
 

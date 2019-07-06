@@ -11,8 +11,12 @@ class UTILITYAI_API UUtilityAIBrainComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBrainSignature)
+
 public:
 	UUtilityAIBrainComponent();
+
+	FBrainSignature OnAct;
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void Act() const;
