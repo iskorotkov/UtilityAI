@@ -16,11 +16,7 @@ struct UTILITYAI_API FCondition
 {
 	GENERATED_BODY()
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FConditionSignature, const FString&, ConditionName, float, Value, bool, Success)
-
 public:
-	FConditionSignature OnEvaluated;
-
 	float Evaluate(const TScriptInterface<IAgent>& Agent);
 
 private:

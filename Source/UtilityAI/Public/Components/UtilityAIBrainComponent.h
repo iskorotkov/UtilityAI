@@ -11,7 +11,7 @@ class UTILITYAI_API UUtilityAIBrainComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBrainSignature)
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBrainSignature);
 
 public:
 	UUtilityAIBrainComponent();
