@@ -15,8 +15,8 @@ class UTILITYAI_API UAction : public UObject
 {
 	GENERATED_BODY()
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActionSignature, const FString&, ActionName, float, ActionValue)
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FConditionSignature, const FString&, ConditionName, float, ConditionValue)
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActionSignature, const FString&, ActionName, float, Value)
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FConditionSignature, const FString&, ConditionName, float, Value)
 
 public:
 	UAction();
