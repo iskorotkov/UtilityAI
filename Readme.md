@@ -25,6 +25,10 @@
 - [ ] add multiple passes to Utility Ai component (each pass is a single brain asset)
 - [ ] add action that can execute another brain
 
+## Performance
+
+- [ ] a lot of delegates can decrease performance
+
 ## Propositions
 
 ## Docs
