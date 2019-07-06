@@ -13,7 +13,12 @@ class UTILITYAI_API UTimedBrainComponent : public UUtilityAIBrainComponent
 {
 	GENERATED_BODY()
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBrainDelegate)
+
 public:
+	FBrainDelegate OnStart;
+	FBrainDelegate OnStop;
+
 	UFUNCTION(BlueprintCallable)
 	void Start();
 
