@@ -17,11 +17,12 @@ class UTILITYAI_API UExpression : public UObject
 	GENERATED_BODY()
 
 public:
+	using FPredicatesContainer = TSet<UPredicate*>;
+	using FPredicatesContainerRef = FPredicatesContainer&;
+
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	bool Evaluate(const TScriptInterface<IAgent>& Agent);
 	virtual bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent);
 
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	TSet<UPredicate*> GetPredicatesRecursively() const;
-	virtual TSet<UPredicate*> GetPredicatesRecursively_Implementation() const;
+	virtual void GetPredicatesRecursively(FPredicatesContainerRef Predicates);
 };

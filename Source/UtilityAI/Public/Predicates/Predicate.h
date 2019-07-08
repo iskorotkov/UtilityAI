@@ -21,5 +21,5 @@ public:
 
 	bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent) override;
 
-	TSet<UPredicate*> GetPredicatesRecursively_Implementation() const override;
+	void GetPredicatesRecursively(FPredicatesContainerRef Predicates) override;
 };

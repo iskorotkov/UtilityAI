@@ -2,9 +2,9 @@
 
 #include "UnaryOperation.h"
 
-TSet<UPredicate*> UUnaryOperation::GetPredicatesRecursively_Implementation() const
+void UUnaryOperation::GetPredicatesRecursively(FPredicatesContainerRef Predicates)
 {
-	return Operand->GetPredicatesRecursively();
+	return Operand->GetPredicatesRecursively(Predicates);
 }
 
 UExpression* UUnaryOperation::First() const

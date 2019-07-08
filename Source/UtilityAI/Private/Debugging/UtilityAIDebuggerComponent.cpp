@@ -7,6 +7,7 @@
 #include "BrainAsset.h"
 #include "Action.h"
 #include "Predicate.h"
+#include "Expression.h"
 
 // Sets default values for this component's properties
 UUtilityAIDebuggerComponent::UUtilityAIDebuggerComponent()
@@ -63,16 +64,16 @@ void UUtilityAIDebuggerComponent::BindActions()
 void UUtilityAIDebuggerComponent::BindPredicates()
 {
 	const auto& Actions = BrainComponent->GetBrainAsset()->GetActions();
-	TSet<UPredicate*> Predicates;
+	UExpression::FPredicatesContainer Predicates;
 	for (const auto Action : Actions)
 	{
 		const auto& Conditions = Action->GetConditions();
 		for (const auto& Condition : Conditions)
 		{
-			Predicates.Append(Condition.GetPredicate()->GetPredicatesRecursively());
+			Condition.GetPredicate()->GetPredicatesRecursively(Predicates);
 		}
 	}
-	for (const auto Predicate : Predicates)
+	for (auto& Predicate : Predicates)
 	{
 		Predicate->OnEvaluated.AddDynamic(this, &UUtilityAIDebuggerComponent::ReactOnPredicateEvaluated);
 	}

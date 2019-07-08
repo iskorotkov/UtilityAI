@@ -4,14 +4,13 @@
 
 bool UPredicate::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
 {
-	Super::Evaluate(Agent);
+	const auto Value = Super::Evaluate(Agent);
 	// TODO: temporary code
 	OnEvaluated.Broadcast(GetName(), false);
+	return Value;
 }
 
-TSet<UPredicate*> UPredicate::GetPredicatesRecursively_Implementation() const
+void UPredicate::GetPredicatesRecursively(FPredicatesContainerRef Predicates)
 {
-	TSet<UPredicate*> Predicates;
-	Predicates.Emplace(this);
-	return Predicates;
+	Predicates.Add(this);
 }

@@ -9,7 +9,6 @@ bool UExpression::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
 	return false;
 }
 
-TSet<UPredicate*> UExpression::GetPredicatesRecursively_Implementation() const
+void UExpression::GetPredicatesRecursively(FPredicatesContainerRef Predicates)
 {
-	return TSet<UPredicate*>();
 }

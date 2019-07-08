@@ -17,7 +17,7 @@ class UTILITYAI_API UBinaryOperation : public UOperation
 	friend class UUtilityAIStatics;
 
 public:
-	TSet<UPredicate*> GetPredicatesRecursively_Implementation() const override;
+	void GetPredicatesRecursively(FPredicatesContainerRef Predicates) override;
 
 protected:
 	UFUNCTION(BlueprintCallable)
