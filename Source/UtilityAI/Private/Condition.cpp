@@ -18,3 +18,8 @@ FString FCondition::GetName() const
 {
 	return Name;
 }
+
+const UPredicate* FCondition::GetPredicate() const
+{
+	return Predicate;
+}

@@ -21,6 +21,8 @@ public:
 
 	FString GetName() const;
 
+	const UPredicate* GetPredicate() const;
+
 private:
 	UPROPERTY()
 	UPredicate* Predicate = nullptr;
