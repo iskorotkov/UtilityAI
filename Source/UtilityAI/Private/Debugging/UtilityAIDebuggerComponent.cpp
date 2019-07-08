@@ -44,7 +44,7 @@ void UUtilityAIDebuggerComponent::ReactOnActionEvaluated(FString ActionName, flo
 
 void UUtilityAIDebuggerComponent::ReactOnPredicateEvaluated(FString PredicateName, bool Success)
 {
-	PredicatesState.Emplace(PredicatesState, Success);
+	PredicatesState.Emplace(PredicateName, Success);
 }
 
 void UUtilityAIDebuggerComponent::BindBrainComponent()
