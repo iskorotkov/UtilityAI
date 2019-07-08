@@ -33,3 +33,8 @@ bool UAction::IgnoreIfCalledTwice() const
 {
 	return bIgnoreIfCalledTwice;
 }
+
+const TArray<FCondition>& UAction::GetConditions() const
+{
+	return Conditions;
+}

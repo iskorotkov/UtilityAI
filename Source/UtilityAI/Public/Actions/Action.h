@@ -38,6 +38,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool IgnoreIfCalledTwice() const;
 
+	UFUNCTION(BlueprintCallable)
+	const TArray<FCondition>& GetConditions() const;
+
 private:
 	UPROPERTY(EditAnywhere, AdvancedDisplay)
 	float BaseValue;
