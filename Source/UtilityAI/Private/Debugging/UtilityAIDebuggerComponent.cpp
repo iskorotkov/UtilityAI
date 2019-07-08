@@ -4,6 +4,9 @@
 #include "GameFramework/Actor.h"
 #include "UtilityAIBrainComponent.h"
 #include "UtilityAI.h"
+#include "BrainAsset.h"
+#include "Action.h"
+#include "Predicate.h"
 
 // Sets default values for this component's properties
 UUtilityAIDebuggerComponent::UUtilityAIDebuggerComponent()
@@ -33,6 +36,48 @@ void UUtilityAIDebuggerComponent::ReactOnActionRun(FString ActionName)
 	State.Emplace(TEXT("Active action"), ActionName);
 }
 
+void UUtilityAIDebuggerComponent::ReactOnActionEvaluated(FString ActionName, float Value)
+{
+	ActionsState.Emplace(ActionName, Value);
+}
+
+void UUtilityAIDebuggerComponent::ReactOnPredicateEvaluated(FString PredicateName, bool Success)
+{
+	PredicatesState.Emplace(PredicatesState, Success);
+}
+
+void UUtilityAIDebuggerComponent::BindBrainComponent()
+{
+	BrainComponent->OnActionRun.AddDynamic(this, &UUtilityAIDebuggerComponent::ReactOnActionRun);
+}
+
+void UUtilityAIDebuggerComponent::BindActions()
+{
+	const auto& Actions = BrainComponent->GetBrainAsset()->GetActions();
+	for (const auto Action : Actions)
+	{
+		Action->OnEvaluated.AddDynamic(this, &UUtilityAIDebuggerComponent::ReactOnActionEvaluated);
+	}
+}
+
+void UUtilityAIDebuggerComponent::BindPredicates()
+{
+	const auto& Actions = BrainComponent->GetBrainAsset()->GetActions();
+	TSet<UPredicate*> Predicates;
+	for (const auto Action : Actions)
+	{
+		const auto& Conditions = Action->GetConditions();
+		for (const auto& Condition : Conditions)
+		{
+			Predicates.Append(Condition.GetPredicate()->GetPredicatesRecursively());
+		}
+	}
+	for (const auto Predicate : Predicates)
+	{
+		Predicate->OnEvaluated.AddDynamic(this, &UUtilityAIDebuggerComponent::ReactOnPredicateEvaluated);
+	}
+}
+
 void UUtilityAIDebuggerComponent::StartDebugging()
 {
 	if (BrainComponent == nullptr)
@@ -40,5 +85,7 @@ void UUtilityAIDebuggerComponent::StartDebugging()
 		UE_LOG(UtilityAI_Debugging, Warning, TEXT("There is no Utility AI Brain Component found"));
 		return;
 	}
-	BrainComponent->OnActionRun.AddDynamic(this, &UUtilityAIDebuggerComponent::ReactOnActionRun);
+	BindBrainComponent();
+	BindActions();
+	BindPredicates();
 }

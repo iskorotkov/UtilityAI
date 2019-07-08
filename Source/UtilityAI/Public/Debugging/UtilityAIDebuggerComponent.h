@@ -34,11 +34,26 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	TMap<FString, FString> State;
 
+	UPROPERTY(VisibleAnywhere)
+	TMap<FString, float> ActionsState;
+
+	UPROPERTY(VisibleAnywhere)
+	TMap<FString, bool> PredicatesState;
+
 	UPROPERTY()
 	UUtilityAIBrainComponent* BrainComponent;
 
 	UFUNCTION()
 	void ReactOnActionRun(FString ActionName);
 
+	UFUNCTION()
+	void ReactOnActionEvaluated(FString ActionName, float Value);
+
+	UFUNCTION()
+	void ReactOnPredicateEvaluated(FString PredicateName, bool Success);
+
 	void StartDebugging();
+	void BindBrainComponent();
+	void BindActions();
+	void BindPredicates();
 };
