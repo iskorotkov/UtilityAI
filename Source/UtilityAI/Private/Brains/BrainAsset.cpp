@@ -2,7 +2,6 @@
 
 #include "BrainAsset.h"
 #include "Action.h"
-#include "SubclassOf.h"
 #include "UtilityAIConstants.h"
 #include "UtilityAI.h"
 
@@ -74,33 +73,33 @@ UAction* UBrainAsset::GetBestEvaluatedAction(const TScriptInterface<IAgent>& Age
 
 UAction* UBrainAsset::SelectAction(const TScriptInterface<IAgent>& Agent)
 {
-	CreateActions(Agent);
+	if (ShouldCreateActions())
+	{
+		CreateActions();
+	}
 	ExecutePreActions(Agent);
 	const auto BestAction = GetBestEvaluatedAction(Agent);
 	ExecutePostActions(Agent);
 	return BestAction;
 }
 
-void UBrainAsset::CreateActions(const TScriptInterface<IAgent>& Agent)
+void UBrainAsset::CreateActions()
 {
-	if (ShouldCreateActions())
+	for (const auto& Class : ActionClasses)
 	{
-		for (const auto& Class : ActionClasses)
-		{
-			Actions.Add(NewObject<UAction>(Agent.GetObject(), Class));
-		}
-		for (const auto& Class : PreActionClasses)
-		{
-			PreActions.Add(NewObject<UAction>(Agent.GetObject(), Class));
-		}
-		for (const auto& Class : PostActionClasses)
-		{
-			PostActions.Add(NewObject<UAction>(Agent.GetObject(), Class));
-		}
+		Actions.Add(NewObject<UAction>(this, Class));
+	}
+	for (const auto& Class : PreActionClasses)
+	{
+		PreActions.Add(NewObject<UAction>(this, Class));
+	}
+	for (const auto& Class : PostActionClasses)
+	{
+		PostActions.Add(NewObject<UAction>(this, Class));
 	}
 }
 
-void UBrainAsset::ExecutePreActions(const TScriptInterface<IAgent>& Agent)
+void UBrainAsset::ExecutePreActions(const TScriptInterface<IAgent>& Agent) const
 {
 	for (const auto Action : PreActions)
 	{
@@ -108,7 +107,7 @@ void UBrainAsset::ExecutePreActions(const TScriptInterface<IAgent>& Agent)
 	}
 }
 
-void UBrainAsset::ExecutePostActions(const TScriptInterface<IAgent>& Agent)
+void UBrainAsset::ExecutePostActions(const TScriptInterface<IAgent>& Agent) const
 {
 	for (const auto Action : PostActions)
 	{
@@ -116,7 +115,11 @@ void UBrainAsset::ExecutePostActions(const TScriptInterface<IAgent>& Agent)
 	}
 }
 
-const TArray<UAction*>& UBrainAsset::GetActions() const
+const TArray<UAction*>& UBrainAsset::GetActions()
 {
+	if (ShouldCreateActions())
+	{
+		CreateActions();
+	}
 	return Actions;
 }

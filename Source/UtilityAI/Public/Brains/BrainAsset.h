@@ -29,7 +29,7 @@ public:
 	UAction* SelectAction(const TScriptInterface<IAgent>& Agent);
 
 	UFUNCTION(BlueprintCallable)
-	const TArray<UAction*>& GetActions() const;
+	const TArray<UAction*>& GetActions();
 
 private:
 	UPROPERTY(EditAnywhere, AdvancedDisplay, meta=(InlineEditConditionToggle))
@@ -60,9 +60,9 @@ private:
 	UPROPERTY()
 	UAction* LastAction;
 
-	void CreateActions(const TScriptInterface<IAgent>& Agent);
-	void ExecutePreActions(const TScriptInterface<IAgent>& Agent);
-	void ExecutePostActions(const TScriptInterface<IAgent>& Agent);
+	void CreateActions();
+	void ExecutePreActions(const TScriptInterface<IAgent>& Agent) const;
+	void ExecutePostActions(const TScriptInterface<IAgent>& Agent) const;
 
 	bool ShouldSkipOtherActions(float Value) const;
 	bool ShouldSkipRepeatingAction(UAction* Action) const;
