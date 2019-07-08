@@ -115,3 +115,8 @@ void UBrainAsset::ExecutePostActions(const TScriptInterface<IAgent>& Agent)
 		Action->Run(Agent);
 	}
 }
+
+const TArray<UAction*>& UBrainAsset::GetActions() const
+{
+	return Actions;
+}
