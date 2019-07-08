@@ -3,7 +3,7 @@
 #include "InRange.h"
 #include "UtilityAI.h"
 
-bool UInRange::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
+bool UInRange::ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	if (ArgsNum() < 2)
 	{

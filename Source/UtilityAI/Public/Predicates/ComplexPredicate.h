@@ -15,7 +15,7 @@ class UTILITYAI_API UComplexPredicate : public UPredicate
 	GENERATED_BODY()
 
 public:
-	bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent) override;
+	bool ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent) override;
 
 protected:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)

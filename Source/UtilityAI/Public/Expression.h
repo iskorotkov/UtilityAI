@@ -20,9 +20,13 @@ public:
 	using FPredicatesContainer = TSet<UPredicate*>;
 	using FPredicatesContainerRef = FPredicatesContainer&;
 
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	bool Evaluate(const TScriptInterface<IAgent>& Agent);
-	virtual bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent);
+	UFUNCTION(BlueprintCallable)
+	virtual bool Evaluate(const TScriptInterface<IAgent>& Agent);
 
 	virtual void GetPredicatesRecursively(FPredicatesContainerRef Predicates);
+
+protected:
+	UFUNCTION(BlueprintNativeEvent)
+	bool ExpressionValue(const TScriptInterface<IAgent>& Agent);
+	virtual bool ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent);
 };

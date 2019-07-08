@@ -2,7 +2,7 @@
 
 #include "Select.h"
 
-bool USelect::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
+bool USelect::ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	return FirstResult(Agent) ? SecondResult(Agent) : ThirdResult(Agent);
 }

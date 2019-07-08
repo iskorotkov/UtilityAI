@@ -3,7 +3,7 @@
 #include "ComplexPredicate.h"
 #include "UtilityAI.h"
 
-bool UComplexPredicate::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
+bool UComplexPredicate::ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	Super::Evaluate(Agent);
 	if (Expression == nullptr)

@@ -19,7 +19,10 @@ class UTILITYAI_API UPredicate : public UExpression
 public:
 	FPredicateSignature OnEvaluated;
 
-	bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent) override;
+	bool Evaluate(const TScriptInterface<IAgent>& Agent) override;
 
 	void GetPredicatesRecursively(FPredicatesContainerRef Predicates) override;
+
+protected:
+	bool ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent) override;
 };
