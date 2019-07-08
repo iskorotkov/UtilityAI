@@ -28,6 +28,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	UAction* SelectAction(const TScriptInterface<IAgent>& Agent);
 
+	UFUNCTION(BlueprintCallable)
+	const TArray<UAction*>& GetActions() const;
+
 private:
 	UPROPERTY(EditAnywhere, AdvancedDisplay, meta=(InlineEditConditionToggle))
 	bool bHasMinValueToAct = false;
@@ -56,9 +59,6 @@ private:
 
 	UPROPERTY()
 	UAction* LastAction;
-
-	UFUNCTION(BlueprintCallable)
-	const TArray<UAction*>& GetActions() const;
 
 	void CreateActions(const TScriptInterface<IAgent>& Agent);
 	void ExecutePreActions(const TScriptInterface<IAgent>& Agent);
