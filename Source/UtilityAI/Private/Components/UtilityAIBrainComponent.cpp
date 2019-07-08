@@ -21,6 +21,11 @@ void UUtilityAIBrainComponent::Act_Implementation() const
 	OnAfterAct.Broadcast();
 }
 
+const UBrainAsset* UUtilityAIBrainComponent::GetBrainAsset() const
+{
+	return Asset;
+}
+
 void UUtilityAIBrainComponent::BeginPlay()
 {
 	Super::BeginPlay();
