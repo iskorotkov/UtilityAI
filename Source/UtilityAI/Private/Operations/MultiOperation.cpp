@@ -2,12 +2,12 @@
 
 #include "MultiOperation.h"
 
-TSet<UPredicate*> UMultiOperation::GetPredicates_Implementation() const
+TSet<UPredicate*> UMultiOperation::GetPredicatesRecursively_Implementation() const
 {
 	TSet<UPredicate*> Predicates;
 	for (const auto& Expr : Operands())
 	{
-		Predicates.Append(Expr->GetPredicates());
+		Predicates.Append(Expr->GetPredicatesRecursively());
 	}
 	return Predicates;
 }

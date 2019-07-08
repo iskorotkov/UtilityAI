@@ -9,7 +9,7 @@ bool UExpression::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
 	return false;
 }
 
-TSet<UPredicate*> UExpression::GetPredicates_Implementation() const
+TSet<UPredicate*> UExpression::GetPredicatesRecursively_Implementation() const
 {
 	return TSet<UPredicate*>();
 }

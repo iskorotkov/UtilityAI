@@ -2,11 +2,11 @@
 
 #include "TernaryOperation.h"
 
-TSet<UPredicate*> UTernaryOperation::GetPredicates_Implementation() const
+TSet<UPredicate*> UTernaryOperation::GetPredicatesRecursively_Implementation() const
 {
-	auto Predicates = Operand1->GetPredicates();
-	Predicates.Append(Operand2->GetPredicates());
-	Predicates.Append(Operand3->GetPredicates());
+	auto Predicates = Operand1->GetPredicatesRecursively();
+	Predicates.Append(Operand2->GetPredicatesRecursively());
+	Predicates.Append(Operand3->GetPredicatesRecursively());
 	return Predicates;
 }
 

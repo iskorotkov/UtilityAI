@@ -22,6 +22,6 @@ public:
 	virtual bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent);
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	TSet<UPredicate*> GetPredicates() const;
-	virtual TSet<UPredicate*> GetPredicates_Implementation() const;
+	TSet<UPredicate*> GetPredicatesRecursively() const;
+	virtual TSet<UPredicate*> GetPredicatesRecursively_Implementation() const;
 };

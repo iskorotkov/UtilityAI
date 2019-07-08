@@ -2,9 +2,9 @@
 
 #include "UnaryOperation.h"
 
-TSet<UPredicate*> UUnaryOperation::GetPredicates_Implementation() const
+TSet<UPredicate*> UUnaryOperation::GetPredicatesRecursively_Implementation() const
 {
-	return Operand->GetPredicates();
+	return Operand->GetPredicatesRecursively();
 }
 
 UExpression* UUnaryOperation::First() const

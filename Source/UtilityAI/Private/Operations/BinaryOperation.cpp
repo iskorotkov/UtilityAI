@@ -2,10 +2,10 @@
 
 #include "BinaryOperation.h"
 
-TSet<UPredicate*> UBinaryOperation::GetPredicates_Implementation() const
+TSet<UPredicate*> UBinaryOperation::GetPredicatesRecursively_Implementation() const
 {
-	auto Predicates = Operand1->GetPredicates();
-	Predicates.Append(Operand2->GetPredicates());
+	auto Predicates = Operand1->GetPredicatesRecursively();
+	Predicates.Append(Operand2->GetPredicatesRecursively());
 	return Predicates;
 }
 
