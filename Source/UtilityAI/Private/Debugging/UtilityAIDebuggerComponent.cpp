@@ -70,7 +70,7 @@ void UUtilityAIDebuggerComponent::BindPredicates()
 		const auto& Conditions = Action->GetConditions();
 		for (const auto& Condition : Conditions)
 		{
-			Condition.GetPredicate()->GetPredicatesRecursively(Predicates);
+			Condition.GetPredicate(BrainComponent)->GetPredicatesRecursively(Predicates);
 		}
 	}
 	for (auto& Predicate : Predicates)

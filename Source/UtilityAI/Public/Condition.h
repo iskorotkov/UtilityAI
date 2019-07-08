@@ -21,11 +21,12 @@ public:
 
 	FString GetName() const;
 
-	UPredicate* GetPredicate() const;
+	// TODO: is it really necessary to pass Agent interface?
+	UPredicate* GetPredicate(const TScriptInterface<IAgent>& Agent) const;
 
 private:
 	UPROPERTY()
-	UPredicate* Predicate = nullptr;
+	mutable UPredicate* Predicate = nullptr;
 
 	UPROPERTY(EditAnywhere)
 	FString Name;
@@ -38,4 +39,6 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float FailureValue = 0.0f;
+
+	void EnsurePredicateIsCreated(const TScriptInterface<IAgent>& Agent) const;
 };
