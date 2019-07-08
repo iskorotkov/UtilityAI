@@ -2,6 +2,16 @@
 
 #include "MultiOperation.h"
 
+TSet<UPredicate*> UMultiOperation::GetPredicates_Implementation() const
+{
+	TSet<UPredicate*> Predicates;
+	for (const auto& Expr : Operands())
+	{
+		Predicates.Append(Expr->GetPredicates());
+	}
+	return Predicates;
+}
+
 UExpression* UMultiOperation::Nth(int N) const
 {
 	return Ops[N];

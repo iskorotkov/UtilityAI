@@ -2,6 +2,13 @@
 
 #include "BinaryOperation.h"
 
+TSet<UPredicate*> UBinaryOperation::GetPredicates_Implementation() const
+{
+	auto Predicates = Operand1->GetPredicates();
+	Predicates.Append(Operand2->GetPredicates());
+	return Predicates;
+}
+
 UExpression* UBinaryOperation::First() const
 {
 	return Operand1;

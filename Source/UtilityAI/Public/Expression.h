@@ -6,6 +6,7 @@
 #include "UObject/NoExportTypes.h"
 #include "Expression.generated.h"
 
+class UPredicate;
 class IAgent;
 /**
  * 
@@ -19,4 +20,8 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	bool Evaluate(const TScriptInterface<IAgent>& Agent);
 	virtual bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	TSet<UPredicate*> GetPredicates() const;
+	virtual TSet<UPredicate*> GetPredicates_Implementation() const;
 };

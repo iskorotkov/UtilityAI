@@ -13,4 +13,7 @@ UCLASS(BlueprintType, Abstract, Blueprintable)
 class UTILITYAI_API UPredicate : public UExpression
 {
 	GENERATED_BODY()
+
+public:
+	TSet<UPredicate*> GetPredicates_Implementation() const override;
 };

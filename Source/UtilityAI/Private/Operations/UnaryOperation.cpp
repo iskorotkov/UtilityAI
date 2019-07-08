@@ -2,6 +2,11 @@
 
 #include "UnaryOperation.h"
 
+TSet<UPredicate*> UUnaryOperation::GetPredicates_Implementation() const
+{
+	return Operand->GetPredicates();
+}
+
 UExpression* UUnaryOperation::First() const
 {
 	return Operand;

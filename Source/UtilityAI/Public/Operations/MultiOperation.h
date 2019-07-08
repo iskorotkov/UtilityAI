@@ -16,6 +16,9 @@ class UTILITYAI_API UMultiOperation : public UOperation
 
 	friend class UUtilityAIStatics;
 
+public:
+	TSet<UPredicate*> GetPredicates_Implementation() const override;
+
 protected:
 
 	// Operands

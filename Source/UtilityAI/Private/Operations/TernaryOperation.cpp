@@ -2,6 +2,14 @@
 
 #include "TernaryOperation.h"
 
+TSet<UPredicate*> UTernaryOperation::GetPredicates_Implementation() const
+{
+	auto Predicates = Operand1->GetPredicates();
+	Predicates.Append(Operand2->GetPredicates());
+	Predicates.Append(Operand3->GetPredicates());
+	return Predicates;
+}
+
 UExpression* UTernaryOperation::First() const
 {
 	return Operand1;

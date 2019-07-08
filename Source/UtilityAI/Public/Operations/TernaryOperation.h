@@ -16,6 +16,9 @@ class UTILITYAI_API UTernaryOperation : public UOperation
 
 	friend class UUtilityAIStatics;
 
+public:
+	TSet<UPredicate*> GetPredicates_Implementation() const override;
+
 protected:
 	UFUNCTION(BlueprintCallable)
 	UExpression* First() const;

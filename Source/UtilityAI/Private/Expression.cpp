@@ -8,3 +8,8 @@ bool UExpression::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
 	UE_LOG(UtilityAI, Error, TEXT("Expression %s has no overriden evaluate behavior"), *GetName());
 	return false;
 }
+
+TSet<UPredicate*> UExpression::GetPredicates_Implementation() const
+{
+	return TSet<UPredicate*>();
+}
