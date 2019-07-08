@@ -27,7 +27,7 @@ public:
 	virtual void Act_Implementation() const;
 
 	UFUNCTION(BlueprintCallable)
-	const UBrainAsset* GetBrainAsset() const;
+	UBrainAsset* GetBrainAsset() const;
 
 protected:
 	void BeginPlay() override;
