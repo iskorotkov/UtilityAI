@@ -2,7 +2,14 @@
 
 #include "Predicate.h"
 
-TSet<UPredicate*> UPredicate::GetPredicates_Implementation() const
+bool UPredicate::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
+{
+	Super::Evaluate(Agent);
+	// TODO: temporary code
+	OnEvaluated.Broadcast(GetName(), false);
+}
+
+TSet<UPredicate*> UPredicate::GetPredicatesRecursively_Implementation() const
 {
 	TSet<UPredicate*> Predicates;
 	Predicates.Emplace(this);

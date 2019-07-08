@@ -14,6 +14,12 @@ class UTILITYAI_API UPredicate : public UExpression
 {
 	GENERATED_BODY()
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FPredicateSignature, FString, PredicateName, bool, Success);
+
 public:
-	TSet<UPredicate*> GetPredicates_Implementation() const override;
+	FPredicateSignature OnEvaluated;
+
+	bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent) override;
+
+	TSet<UPredicate*> GetPredicatesRecursively_Implementation() const override;
 };
