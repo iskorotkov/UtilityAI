@@ -5,6 +5,7 @@
 
 bool UComplexPredicate::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
 {
+	Super::Evaluate(Agent);
 	if (Expression == nullptr)
 	{
 		Expression = AssignExpression(Agent);
