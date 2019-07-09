@@ -11,12 +11,23 @@ class UTILITYAI_API UUtilityAIBrainComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBrainSignature);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FActionSignature, FString, ActionName);
+
 public:
 	UUtilityAIBrainComponent();
+
+	FBrainSignature OnBeforeAct;
+	FBrainSignature OnAfterAct;
+
+	FActionSignature OnActionRun;
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void Act() const;
 	virtual void Act_Implementation() const;
+
+	UFUNCTION(BlueprintCallable)
+	UBrainAsset* GetBrainAsset() const;
 
 protected:
 	void BeginPlay() override;

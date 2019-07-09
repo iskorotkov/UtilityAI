@@ -13,6 +13,8 @@
 
 ## Improvements
 
+- [x] remove duplicated predicates
+
 ## Deprecation
 
 - [ ] Remove TicTacToe example (because it's unfinished)
@@ -20,10 +22,14 @@
 ## Features
 
 - [x] add logging (with custom categories)
-- [ ] add visual debugger
+- [x] add visual debugger
 - [ ] add description to actions/predicates
 - [ ] add multiple passes to Utility Ai component (each pass is a single brain asset)
 - [ ] add action that can execute another brain
+
+## Performance
+
+- [ ] a lot of delegates can decrease performance
 
 ## Propositions
 

@@ -2,7 +2,7 @@
 
 #include "Xor.h"
 
-bool UXor::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
+bool UXor::ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	return FirstResult(Agent) ^ SecondResult(Agent);
 }

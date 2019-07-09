@@ -2,6 +2,13 @@
 
 #include "TernaryOperation.h"
 
+void UTernaryOperation::GetPredicatesRecursively(FPredicatesContainerRef Predicates)
+{
+	Operand1->GetPredicatesRecursively(Predicates);
+	Operand2->GetPredicatesRecursively(Predicates);
+	Operand3->GetPredicatesRecursively(Predicates);
+}
+
 UExpression* UTernaryOperation::First() const
 {
 	return Operand1;

@@ -16,6 +16,9 @@ class UTILITYAI_API UBinaryOperation : public UOperation
 
 	friend class UUtilityAIStatics;
 
+public:
+	void GetPredicatesRecursively(FPredicatesContainerRef Predicates) override;
+
 protected:
 	UFUNCTION(BlueprintCallable)
 	UExpression* First() const;

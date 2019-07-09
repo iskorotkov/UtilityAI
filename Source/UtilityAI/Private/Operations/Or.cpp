@@ -2,7 +2,7 @@
 
 #include "Or.h"
 
-bool UOr::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
+bool UOr::ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	return FirstResult(Agent) || SecondResult(Agent);
 }

@@ -2,7 +2,7 @@
 
 #include "And.h"
 
-bool UAnd::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
+bool UAnd::ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	return FirstResult(Agent) && SecondResult(Agent);
 }

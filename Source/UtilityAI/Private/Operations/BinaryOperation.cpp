@@ -2,6 +2,12 @@
 
 #include "BinaryOperation.h"
 
+void UBinaryOperation::GetPredicatesRecursively(FPredicatesContainerRef Predicates)
+{
+	Operand1->GetPredicatesRecursively(Predicates);
+	Operand2->GetPredicatesRecursively(Predicates);
+}
+
 UExpression* UBinaryOperation::First() const
 {
 	return Operand1;

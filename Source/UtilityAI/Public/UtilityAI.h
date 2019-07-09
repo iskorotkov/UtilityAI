@@ -18,5 +18,5 @@ DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Predicates, Log, All)
 DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Operations, Log, All)
 DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Components, Log, All)
 DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Statics, Log, All)
+DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Debugging, Log, All)
 DECLARE_LOG_CATEGORY_EXTERN(UtilityAI, Log, All)
-

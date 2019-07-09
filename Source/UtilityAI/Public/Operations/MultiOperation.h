@@ -16,6 +16,9 @@ class UTILITYAI_API UMultiOperation : public UOperation
 
 	friend class UUtilityAIStatics;
 
+public:
+	void GetPredicatesRecursively(FPredicatesContainerRef Predicates) override;
+
 protected:
 
 	// Operands

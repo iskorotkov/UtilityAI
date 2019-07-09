@@ -2,6 +2,11 @@
 
 #include "UnaryOperation.h"
 
+void UUnaryOperation::GetPredicatesRecursively(FPredicatesContainerRef Predicates)
+{
+	return Operand->GetPredicatesRecursively(Predicates);
+}
+
 UExpression* UUnaryOperation::First() const
 {
 	return Operand;

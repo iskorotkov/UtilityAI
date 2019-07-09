@@ -14,6 +14,6 @@ class UTILITYAI_API UNot : public UUnaryOperation
 {
 	GENERATED_BODY()
 
-public:
-	bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent) override;
+protected:
+	bool ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent) override;
 };

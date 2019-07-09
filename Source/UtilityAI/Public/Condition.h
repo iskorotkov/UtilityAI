@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SubclassOf.h"
 #include "Condition.generated.h"
 
 class UPredicate;
@@ -18,9 +19,17 @@ struct UTILITYAI_API FCondition
 public:
 	float Evaluate(const TScriptInterface<IAgent>& Agent);
 
+	FString GetName() const;
+
+	// TODO: is it really necessary to pass Agent interface?
+	UPredicate* GetPredicate(const TScriptInterface<IAgent>& Agent) const;
+
 private:
 	UPROPERTY()
-	UPredicate* Predicate = nullptr;
+	mutable UPredicate* Predicate = nullptr;
+
+	UPROPERTY(EditAnywhere)
+	FString Name;
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UPredicate> PredicateClass;
@@ -30,4 +39,6 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float FailureValue = 0.0f;
+
+	void EnsurePredicateIsCreated(const TScriptInterface<IAgent>& Agent) const;
 };

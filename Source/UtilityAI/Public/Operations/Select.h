@@ -14,6 +14,6 @@ class UTILITYAI_API USelect : public UTernaryOperation
 {
 	GENERATED_BODY()
 
-public:
-	bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent) override;
+protected:
+	bool ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent) override;
 };

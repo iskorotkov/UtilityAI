@@ -2,6 +2,14 @@
 
 #include "MultiOperation.h"
 
+void UMultiOperation::GetPredicatesRecursively(FPredicatesContainerRef Predicates)
+{
+	for (const auto& Expr : Operands())
+	{
+		Expr->GetPredicatesRecursively(Predicates);
+	}
+}
+
 UExpression* UMultiOperation::Nth(int N) const
 {
 	return Ops[N];

@@ -2,7 +2,7 @@
 
 #include "Not.h"
 
-bool UNot::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
+bool UNot::ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	return !FirstResult(Agent);
 }

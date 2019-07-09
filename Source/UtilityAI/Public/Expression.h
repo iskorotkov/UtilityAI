@@ -6,6 +6,7 @@
 #include "UObject/NoExportTypes.h"
 #include "Expression.generated.h"
 
+class UPredicate;
 class IAgent;
 /**
  * 
@@ -16,7 +17,16 @@ class UTILITYAI_API UExpression : public UObject
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	bool Evaluate(const TScriptInterface<IAgent>& Agent);
-	virtual bool Evaluate_Implementation(const TScriptInterface<IAgent>& Agent);
+	using FPredicatesContainer = TSet<UPredicate*>;
+	using FPredicatesContainerRef = FPredicatesContainer&;
+
+	UFUNCTION(BlueprintCallable)
+	virtual bool Evaluate(const TScriptInterface<IAgent>& Agent);
+
+	virtual void GetPredicatesRecursively(FPredicatesContainerRef Predicates);
+
+protected:
+	UFUNCTION(BlueprintNativeEvent)
+	bool ExpressionValue(const TScriptInterface<IAgent>& Agent);
+	virtual bool ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent);
 };
