@@ -13,4 +13,10 @@ USTRUCT(BlueprintType)
 struct UTILITYAI_API FDebuggerSettings
 {
 	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere)
+	bool bStripPredicateNames = true;
+
+	UPROPERTY(EditAnywhere)
+	bool bStripActionNames = true;
 };

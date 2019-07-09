@@ -56,4 +56,8 @@ private:
 	void BindBrainComponent();
 	void BindActions();
 	void BindPredicates();
+
+	const FDebuggerSettings& GetSettings() const;
+
+	FString StripName(const FString& Name) const;
 };

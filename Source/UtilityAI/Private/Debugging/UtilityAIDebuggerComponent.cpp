@@ -39,11 +39,19 @@ void UUtilityAIDebuggerComponent::ReactOnActionRun(FString ActionName)
 
 void UUtilityAIDebuggerComponent::ReactOnActionEvaluated(FString ActionName, float Value)
 {
+	if (GetSettings().bStripActionNames)
+	{
+		ActionName = StripName(ActionName);
+	}
 	ActionsState.Emplace(ActionName, Value);
 }
 
 void UUtilityAIDebuggerComponent::ReactOnPredicateEvaluated(FString PredicateName, bool Success)
 {
+	if (GetSettings().bStripPredicateNames)
+	{
+		PredicateName = StripName(PredicateName);
+	}
 	PredicatesState.Emplace(PredicateName, Success);
 }
 
@@ -77,6 +85,20 @@ void UUtilityAIDebuggerComponent::BindPredicates()
 	{
 		Predicate->OnEvaluated.AddDynamic(this, &UUtilityAIDebuggerComponent::ReactOnPredicateEvaluated);
 	}
+}
+
+const FDebuggerSettings& UUtilityAIDebuggerComponent::GetSettings() const
+{
+	return Settings;
+}
+
+FString UUtilityAIDebuggerComponent::StripName(const FString& Name) const
+{
+	auto Index = Name.Len() - 1;
+	Name.FindLastChar('_', Index);
+	--Index;
+	Name.FindLastChar('_', Index);
+	return Name.Left(Index-2);
 }
 
 void UUtilityAIDebuggerComponent::StartDebugging()
