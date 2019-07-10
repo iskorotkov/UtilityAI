@@ -11,13 +11,16 @@
 
 ## Deprecation
 
-- [ ] Remove TicTacToe example (because it's unfinished)
+- [ ] TicTacToe example
+    - finish or
+    - delete
 
 ## Features
 
 - [ ] add description to actions/predicates
 - [ ] add multiple passes to Utility Ai component (each pass is a single brain asset)
-- [ ] add action that can execute another brain
+- [x] add action that can execute another brain
+    - *needs testing*
 - [ ] add action stack to debug actions that execute brain
 - [ ] add action log to see which action where executed in the past
 
