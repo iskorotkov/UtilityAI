@@ -64,7 +64,6 @@ UAction* UBrainAsset::GetBestEvaluatedAction(const TScriptInterface<IAgent>& Age
 	}
 	else
 	{
-		// TODO: remove constants
 		OnActionSelected.Broadcast("None", 0.f);
 	}
 	LastAction = BestAction;

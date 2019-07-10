@@ -27,7 +27,6 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void RunBehavior(const UBehaviorTree* Behavior);
 
-	// TODO: is there an easier way to create and access agent data object?
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	UAgentData* GetAgentData();
 };

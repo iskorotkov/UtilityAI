@@ -18,7 +18,6 @@ class UTILITYAI_API UBrainAsset : public UObject
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActionSignature, FString, ActionName, float, Value);
 
 public:
-	// TODO: too much delegates? use less delegates and pass additional data in them
 	FActionSignature OnActionRanked;
 	FActionSignature OnActionSelected;
 	FActionSignature OnLowRankedActionSkipped;

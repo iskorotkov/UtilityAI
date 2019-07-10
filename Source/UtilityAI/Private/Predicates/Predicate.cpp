@@ -5,7 +5,6 @@
 
 bool UPredicate::ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent)
 {
-	// TODO: method that could be accidentally overriden
 	return false;
 }
 

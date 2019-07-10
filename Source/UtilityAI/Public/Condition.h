@@ -21,7 +21,6 @@ public:
 
 	FString GetName() const;
 
-	// TODO: is it really necessary to pass Agent interface?
 	UPredicate* GetPredicate(const TScriptInterface<IAgent>& Agent) const;
 
 private:
