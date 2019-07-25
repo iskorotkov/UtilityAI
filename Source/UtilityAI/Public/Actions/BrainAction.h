@@ -18,6 +18,8 @@ class UTILITYAI_API UBrainAction : public UAction
 public:
 	void Run_Implementation(const TScriptInterface<IAgent>& Agent) const override;
 
+	UBrainAsset* GetBrain();
+
 private:
 	UPROPERTY(EditAnywhere)
 	UBrainAsset* Brain;

@@ -17,3 +17,8 @@ void UBrainAction::Run_Implementation(const TScriptInterface<IAgent>& Agent) con
 		Action->Run(Agent);
 	}
 }
+
+UBrainAsset* UBrainAction::GetBrain()
+{
+	return Brain;
+}
