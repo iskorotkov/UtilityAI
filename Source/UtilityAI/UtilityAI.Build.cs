@@ -16,7 +16,7 @@ public class UtilityAI : ModuleRules
 			}
 			);
 			
-		
+		// TODO: move "UnrealEd" part in separate module
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
@@ -24,6 +24,7 @@ public class UtilityAI : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+                "UnrealEd",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "ComboBoxString.h"
+#include "UtilityAIBrainComponent.h"
 #include "BrainDebuggingWidgetImpl.generated.h"
 
 class UBrainAsset;
@@ -34,4 +35,7 @@ private:
 	UBrainAsset* SelectedBrain;
 
 	TArray<UBrainAsset*> ActorBrains;
+	TArray<FString> ActorBrainsNames;
+
+	void ExtractComponentInfo(UUtilityAIBrainComponent* BrainComponent);
 };
