@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "BrainAction.h"
+#include "UtilityAIDebuggerComponent.h"
 #include "UtilityAIStatics.generated.h"
 
 class UPredicate;
@@ -23,6 +25,8 @@ class UTILITYAI_API UUtilityAIStatics : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
+	// TODO: move methods in separate files
+
 	// Creating and setting up base objects
 
 	UFUNCTION(Category="Utility AI|Statics", BlueprintPure)
@@ -48,6 +52,28 @@ public:
 	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
 	static AActor* AsActor(const TScriptInterface<IAgent>& Agent);
 
+	// Access to predicates, actions and brains
+
+	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
+	static UBrainAsset* GetBrain(UUtilityAIBrainComponent* BrainComponent);
+
+	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
+	static TArray<UBrainAsset*> GetBrainsRecursively(UUtilityAIBrainComponent* BrainComponent);
+
+	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
+	static TArray<UAction*> GetActions(UUtilityAIBrainComponent* BrainComponent);
+
+	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
+	static TArray<UAction*> GetActionsRecursively(UUtilityAIBrainComponent* BrainComponent);
+
+	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
+	static TArray<UPredicate*> GetPredicates(UUtilityAIBrainComponent* BrainComponent);
+
+	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
+	static TArray<UPredicate*> GetPredicatesRecursively(UUtilityAIBrainComponent* BrainComponent);
+
 private:
 	static UObject* GetOuter();
+
+	static void GetActions_Internal(TArray<UAction*>& Actions, UAction* Action);
 };
