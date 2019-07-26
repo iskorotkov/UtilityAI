@@ -5,9 +5,9 @@
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "BrainAction.h"
-#include "UtilityAIDebuggerComponent.h"
 #include "UtilityAIStatics.generated.h"
 
+class UUtilityAIBrainComponent;
 class UPredicate;
 class UMultiOperation;
 class UTernaryOperation;
