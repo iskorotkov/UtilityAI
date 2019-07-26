@@ -5,16 +5,16 @@
 
 void UDataRowWidget::Init(UTextBlock* NameText, UTextBlock* ValueText)
 {
-	Name = NameText;
-	Value = ValueText;
+	NameWidget = NameText;
+	ValueWidget = ValueText;
 }
 
 void UDataRowWidget::SetName(const FText Text)
 {
-	Name->SetText(Text);
+	NameWidget->SetText(Text);
 }
 
-void UDataRowWidget::UpdateValue(const FText Text)
+void UDataRowWidget::SetValue(const FText Text)
 {
-	Value->SetText(Text);
+	ValueWidget->SetText(Text);
 }

@@ -17,18 +17,19 @@ class UDataRowWidget : public UUserWidget
 
 public:
 	UFUNCTION(BlueprintCallable)
-	void Init(UTextBlock* NameText, UTextBlock* ValueText);
-
-	UFUNCTION(BlueprintCallable)
 	void SetName(FText Text);
 
 	UFUNCTION(BlueprintCallable)
-	void UpdateValue(FText Text);
+	void SetValue(FText Text);
+
+protected:
+	UFUNCTION(BlueprintCallable)
+	void Init(UTextBlock* NameText, UTextBlock* ValueText);
 
 private:
 	UPROPERTY()
-	UTextBlock* Name;
+	UTextBlock* NameWidget;
 
 	UPROPERTY()
-	UTextBlock* Value;
+	UTextBlock* ValueWidget;
 };
