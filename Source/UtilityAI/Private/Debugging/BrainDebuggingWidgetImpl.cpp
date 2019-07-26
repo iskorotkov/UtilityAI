@@ -40,7 +40,10 @@ TArray<FString> UBrainDebuggingWidgetImpl::GetBrainOptions()
 void UBrainDebuggingWidgetImpl::SelectBrain(const FString SelectedItem)
 {
 	const auto Index = ActorBrainsNames.IndexOfByKey(SelectedItem);
-	SelectedBrain = ActorBrains[Index];
+	if (ActorBrains.IsValidIndex(Index))
+	{
+		SelectedBrain = ActorBrains[Index];
+	}
 }
 
 void UBrainDebuggingWidgetImpl::ExtractComponentInfo(UUtilityAIBrainComponent* const BrainComponent)
@@ -50,6 +53,6 @@ void UBrainDebuggingWidgetImpl::ExtractComponentInfo(UUtilityAIBrainComponent* c
 	for (const auto Brain : ActorBrains)
 	{
 		// TODO: in which format to show brain name?
-		ActorBrainsNames.Add(Brain->GetPathName());
+		ActorBrainsNames.Add(Brain->GetPathName(BrainComponent));
 	}
 }
