@@ -32,7 +32,7 @@ void UBrainDebuggingWidgetImpl::SelectActor()
 	}
 }
 
-TArray<FString> UBrainDebuggingWidgetImpl::GetBrainOptions()
+TArray<FString> UBrainDebuggingWidgetImpl::GetBrainOptions() const
 {
 	return ActorBrainsNames;
 }

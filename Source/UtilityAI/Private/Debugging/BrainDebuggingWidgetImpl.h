@@ -22,7 +22,7 @@ public:
 	void SelectActor();
 
 	UFUNCTION(BlueprintCallable)
-	TArray<FString> GetBrainOptions();
+	TArray<FString> GetBrainOptions() const;
 
 	UFUNCTION(BlueprintCallable)
 	void SelectBrain(FString SelectedItem);
