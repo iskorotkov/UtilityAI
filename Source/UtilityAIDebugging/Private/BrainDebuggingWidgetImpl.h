@@ -4,9 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "ComboBoxString.h"
 #include "BrainDebuggingWidgetImpl.generated.h"
 
+class UComboBoxString;
 class UUtilityAIBrainComponent;
 class UBrainAsset;
 /**
@@ -26,6 +26,12 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SelectBrain(FString SelectedItem);
+
+	UFUNCTION(BlueprintCallable)
+	void FillBrainComboBox(UComboBoxString* ComboBox);
+
+	UFUNCTION(BlueprintCallable)
+	void ResetBrainComboBox(UComboBoxString* ComboBox);
 
 private:
 	UPROPERTY()

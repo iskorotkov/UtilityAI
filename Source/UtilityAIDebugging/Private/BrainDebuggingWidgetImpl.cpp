@@ -6,6 +6,7 @@
 #include "UtilityAIBrainComponent.h"
 #include "UtilityAIStatics.h"
 #include "BrainAsset.h"
+#include "ComboBoxString.h"
 
 void UBrainDebuggingWidgetImpl::SelectActor()
 {
@@ -44,6 +45,26 @@ void UBrainDebuggingWidgetImpl::SelectBrain(const FString SelectedItem)
 	{
 		SelectedBrain = ActorBrains[Index];
 	}
+}
+
+void UBrainDebuggingWidgetImpl::FillBrainComboBox(UComboBoxString* ComboBox)
+{
+	ResetBrainComboBox(ComboBox);
+	const auto Options = GetBrainOptions();
+	if (Options.Num() > 0)
+	{
+		for (const auto& Str : Options)
+		{
+			ComboBox->AddOption(Str);
+		}
+		ComboBox->SetSelectedIndex(0);
+	}
+}
+
+void UBrainDebuggingWidgetImpl::ResetBrainComboBox(UComboBoxString* ComboBox)
+{
+	ComboBox->ClearOptions();
+	ComboBox->ClearOptions();
 }
 
 void UBrainDebuggingWidgetImpl::ExtractComponentInfo(UUtilityAIBrainComponent* const BrainComponent)
