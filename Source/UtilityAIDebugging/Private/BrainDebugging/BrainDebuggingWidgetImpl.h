@@ -34,6 +34,10 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void ResetBrainComboBox(UComboBoxString* ComboBox);
 
+protected:
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnBrainSelected(UBrainAsset* Brain);
+
 private:
 	UPROPERTY()
 	AActor* SelectedActor;

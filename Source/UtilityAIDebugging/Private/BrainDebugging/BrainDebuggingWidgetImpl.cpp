@@ -45,6 +45,7 @@ void UBrainDebuggingWidgetImpl::SelectBrain(const FString SelectedItem)
 	{
 		SelectedBrain = ActorBrains[Index];
 	}
+	OnBrainSelected(SelectedBrain);
 }
 
 void UBrainDebuggingWidgetImpl::FillBrainComboBox(UComboBoxString* ComboBox)
