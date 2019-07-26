@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
+#include "Blutility/Classes/EditorUtilityWidget.h"
 #include "BrainDebuggingWidgetImpl.generated.h"
 
 class UComboBoxString;
@@ -13,7 +14,7 @@ class UBrainAsset;
  * 
  */
 UCLASS(BlueprintType)
-class UBrainDebuggingWidgetImpl : public UObject
+class UBrainDebuggingWidgetImpl : public UEditorUtilityWidget
 {
 	GENERATED_BODY()
 

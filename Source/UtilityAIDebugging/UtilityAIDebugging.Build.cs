@@ -17,7 +17,6 @@ public class UtilityAIDebugging : ModuleRules
 			}
 			);
 			
-		// TODO: move "UnrealEd" part in separate module
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
@@ -27,6 +26,7 @@ public class UtilityAIDebugging : ModuleRules
 				"SlateCore",
                 "UnrealEd",
                 "UMG",
+                "Blutility",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
