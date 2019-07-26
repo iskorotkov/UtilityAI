@@ -18,6 +18,11 @@
 			"Name": "UtilityAI",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "UtilityAIDebugging",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
 		}
 	]
 }

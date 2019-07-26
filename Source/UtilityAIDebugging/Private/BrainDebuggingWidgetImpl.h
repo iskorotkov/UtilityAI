@@ -5,9 +5,9 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "ComboBoxString.h"
-#include "UtilityAIBrainComponent.h"
 #include "BrainDebuggingWidgetImpl.generated.h"
 
+class UUtilityAIBrainComponent;
 class UBrainAsset;
 /**
  * 
