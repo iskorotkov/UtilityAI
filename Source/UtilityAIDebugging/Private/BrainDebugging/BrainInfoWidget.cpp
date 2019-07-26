@@ -5,7 +5,10 @@
 
 void UBrainInfoWidget::SetBrain(UBrainAsset* Brain)
 {
-	Brain->OnActionSelected.AddDynamic(this, &UBrainInfoWidget::ReactOnActionSelected);
+	if (Brain)
+	{
+		Brain->OnActionSelected.AddDynamic(this, &UBrainInfoWidget::ReactOnActionSelected);
+	}
 }
 
 void UBrainInfoWidget::ReactOnActionSelected(const FString Name, const float Value)
