@@ -9,7 +9,6 @@
 #include "Predicate.h"
 #include "Agent.h"
 #include "AIController.h"
-#include "UtilityAIBrainComponent.h"
 #include "BrainAsset.h"
 #include "Action.h"
 #include "BrainAction.h"
@@ -66,16 +65,12 @@ UObject* UUtilityAIStatics::GetOuter()
 	return Cast<UObject>(GetTransientPackage());
 }
 
-UBrainAsset* UUtilityAIStatics::GetBrain(UUtilityAIBrainComponent* BrainComponent)
+TArray<UBrainAsset*> UUtilityAIStatics::GetBrainsRecursively(UBrainAsset* Brain)
 {
-	return BrainComponent->GetBrainAsset();
-}
-
-TArray<UBrainAsset*> UUtilityAIStatics::GetBrainsRecursively(UUtilityAIBrainComponent* BrainComponent)
-{
+	check(Brain);
 	TArray<UBrainAsset*> Results;
-	Results.Add(BrainComponent->GetBrainAsset());
-	const auto Actions = GetActionsRecursively(BrainComponent);
+	Results.Add(Brain);
+	const auto Actions = GetActionsRecursively(Brain);
 	for (const auto Action : Actions)
 	{
 		if (const auto BrainAction = Cast<UBrainAction>(Action))
@@ -86,15 +81,10 @@ TArray<UBrainAsset*> UUtilityAIStatics::GetBrainsRecursively(UUtilityAIBrainComp
 	return Results;
 }
 
-TArray<UAction*> UUtilityAIStatics::GetActions(UUtilityAIBrainComponent* BrainComponent)
+TArray<UAction*> UUtilityAIStatics::GetActionsRecursively(UBrainAsset* Brain)
 {
-	const auto& Actions = BrainComponent->GetBrainAsset()->GetActions();
-	return Actions;
-}
-
-TArray<UAction*> UUtilityAIStatics::GetActionsRecursively(UUtilityAIBrainComponent* BrainComponent)
-{
-	auto Actions = BrainComponent->GetBrainAsset()->GetActions();
+	check(Brain);
+	auto Actions = Brain->GetActions();
 	for (const auto Action : Actions)
 	{
 		GetActions_Internal(Actions, Action);
@@ -102,9 +92,10 @@ TArray<UAction*> UUtilityAIStatics::GetActionsRecursively(UUtilityAIBrainCompone
 	return Actions;
 }
 
-TArray<UPredicate*> UUtilityAIStatics::GetPredicates(UUtilityAIBrainComponent* BrainComponent)
+TArray<UPredicate*> UUtilityAIStatics::GetPredicates(UBrainAsset* Brain)
 {
-	const auto& Actions = GetActions(BrainComponent);
+	check(Brain);
+	const auto& Actions = Brain->GetActions();
 
 	// TODO: use type like this consistently (or don't use at all)
 
@@ -114,22 +105,24 @@ TArray<UPredicate*> UUtilityAIStatics::GetPredicates(UUtilityAIBrainComponent* B
 		const auto& Conditions = Action->GetConditions();
 		for (const auto& Condition : Conditions)
 		{
-			Condition.GetPredicate(BrainComponent)->GetPredicatesRecursively(Predicates);
+			// TODO: Some nasty bug here : why do condition and predicate need IAgent instance?
+			Condition.GetPredicate(Brain)->GetPredicatesRecursively(Predicates);
 		}
 	}
 	return Predicates.Array();
 }
 
-TArray<UPredicate*> UUtilityAIStatics::GetPredicatesRecursively(UUtilityAIBrainComponent* BrainComponent)
+TArray<UPredicate*> UUtilityAIStatics::GetPredicatesRecursively(UBrainAsset* Brain)
 {
-	const auto& Actions = GetActionsRecursively(BrainComponent);
+	check(Brain);
+	const auto& Actions = GetActionsRecursively(Brain);
 	UExpression::FPredicatesContainer Predicates;
 	for (const auto Action : Actions)
 	{
 		const auto& Conditions = Action->GetConditions();
 		for (const auto& Condition : Conditions)
 		{
-			Condition.GetPredicate(BrainComponent)->GetPredicatesRecursively(Predicates);
+			Condition.GetPredicate(Brain)->GetPredicatesRecursively(Predicates);
 		}
 	}
 	return Predicates.Array();

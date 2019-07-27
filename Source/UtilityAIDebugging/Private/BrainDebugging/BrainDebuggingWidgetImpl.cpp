@@ -70,7 +70,7 @@ void UBrainDebuggingWidgetImpl::ResetBrainComboBox(UComboBoxString* ComboBox)
 
 void UBrainDebuggingWidgetImpl::ExtractComponentInfo(UUtilityAIBrainComponent* const BrainComponent)
 {
-	ActorBrains = UUtilityAIStatics::GetBrainsRecursively(BrainComponent);
+	ActorBrains = UUtilityAIStatics::GetBrainsRecursively(BrainComponent->GetBrainAsset());
 	ActorBrainsNames.Empty();
 	for (const auto Brain : ActorBrains)
 	{

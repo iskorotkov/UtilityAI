@@ -7,7 +7,7 @@
 #include "BrainAction.h"
 #include "UtilityAIStatics.generated.h"
 
-class UUtilityAIBrainComponent;
+class UBrainAsset;
 class UPredicate;
 class UMultiOperation;
 class UTernaryOperation;
@@ -55,22 +55,16 @@ public:
 	// Access to predicates, actions and brains
 
 	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
-	static UBrainAsset* GetBrain(UUtilityAIBrainComponent* BrainComponent);
+	static TArray<UBrainAsset*> GetBrainsRecursively(UBrainAsset* Brain);
 
 	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
-	static TArray<UBrainAsset*> GetBrainsRecursively(UUtilityAIBrainComponent* BrainComponent);
+	static TArray<UAction*> GetActionsRecursively(UBrainAsset* Brain);
 
 	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
-	static TArray<UAction*> GetActions(UUtilityAIBrainComponent* BrainComponent);
+	static TArray<UPredicate*> GetPredicates(UBrainAsset* Brain);
 
 	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
-	static TArray<UAction*> GetActionsRecursively(UUtilityAIBrainComponent* BrainComponent);
-
-	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
-	static TArray<UPredicate*> GetPredicates(UUtilityAIBrainComponent* BrainComponent);
-
-	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
-	static TArray<UPredicate*> GetPredicatesRecursively(UUtilityAIBrainComponent* BrainComponent);
+	static TArray<UPredicate*> GetPredicatesRecursively(UBrainAsset* Brain);
 
 private:
 	static UObject* GetOuter();
