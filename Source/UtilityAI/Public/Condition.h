@@ -21,7 +21,7 @@ public:
 
 	FString GetName() const;
 
-	UPredicate* GetPredicate(const TScriptInterface<IAgent>& Agent) const;
+	UPredicate* GetPredicate() const;
 
 private:
 	UPROPERTY()
@@ -39,5 +39,6 @@ private:
 	UPROPERTY(EditAnywhere)
 	float FailureValue = 0.0f;
 
-	void EnsurePredicateIsCreated(const TScriptInterface<IAgent>& Agent) const;
+	UObject* GetPredicateOuter() const;
+	void EnsurePredicateIsCreated() const;
 };
