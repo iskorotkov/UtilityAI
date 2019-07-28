@@ -84,10 +84,11 @@ TArray<UBrainAsset*> UUtilityAIStatics::GetBrainsRecursively(UBrainAsset* Brain)
 TArray<UAction*> UUtilityAIStatics::GetActionsRecursively(UBrainAsset* Brain)
 {
 	check(Brain);
-	auto Actions = Brain->GetActions();
+	const auto Actions = Brain->GetActions();
+	auto Results = Actions;
 	for (const auto Action : Actions)
 	{
-		GetActions_Internal(Actions, Action);
+		GetActions_Internal(Results, Action);
 	}
 	return Actions;
 }
