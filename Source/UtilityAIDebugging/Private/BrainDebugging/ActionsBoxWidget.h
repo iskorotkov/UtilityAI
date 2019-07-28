@@ -23,6 +23,9 @@ public:
 protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	UDataRowWidget* AddDataRow();
+	
+	UFUNCTION(BlueprintNativeEvent)
+	void Reset();
 
 private:
 	TMap<FString, UDataRowWidget*> DataRows;

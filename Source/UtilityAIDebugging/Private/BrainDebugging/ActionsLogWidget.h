@@ -20,6 +20,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetBrain(UBrainAsset* Brain);
 
+	UFUNCTION(BlueprintNativeEvent)
+	void Reset();
+
 protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	UDataRowWidget* AddDataRow();

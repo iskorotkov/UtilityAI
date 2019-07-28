@@ -15,6 +15,7 @@ UPredicatesBoxWidget::UPredicatesBoxWidget(const FObjectInitializer& ObjectIniti
 void UPredicatesBoxWidget::SetBrain(UBrainAsset* Brain)
 {
 	check(Brain);
+	Reset();
 	const auto Predicates = UUtilityAIStatics::GetPredicates(Brain);
 	for (const auto Predicate : Predicates)
 	{
@@ -25,6 +26,11 @@ void UPredicatesBoxWidget::SetBrain(UBrainAsset* Brain)
 		DataRows.Add(Name, DataRow);
 		Predicate->OnEvaluated.AddDynamic(this, &UPredicatesBoxWidget::UpdateRow);
 	}
+}
+
+void UPredicatesBoxWidget::Reset_Implementation()
+{
+	DataRows.Empty();
 }
 
 void UPredicatesBoxWidget::UpdateRow(const FString Name, const bool Result)

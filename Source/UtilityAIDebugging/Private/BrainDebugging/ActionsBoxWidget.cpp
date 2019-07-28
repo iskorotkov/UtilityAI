@@ -8,6 +8,7 @@
 void UActionsBoxWidget::SetBrain(UBrainAsset* Brain)
 {
 	check(Brain);
+	Reset();
 	const auto& Actions = Brain->GetActions();
 	for (const auto Action : Actions)
 	{
@@ -18,6 +19,11 @@ void UActionsBoxWidget::SetBrain(UBrainAsset* Brain)
 		DataRow->SetName(FText::FromString(ActionName));
 		Brain->OnActionRanked.AddDynamic(this, &UActionsBoxWidget::UpdateRow);
 	}
+}
+
+void UActionsBoxWidget::Reset_Implementation()
+{
+	DataRows.Empty();
 }
 
 void UActionsBoxWidget::UpdateRow(const FString Name, const float Value)

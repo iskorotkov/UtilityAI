@@ -7,7 +7,12 @@
 void UActionsLogWidget::SetBrain(UBrainAsset* Brain)
 {
 	check(Brain);
+	Reset();
 	Brain->OnActionSelected.AddDynamic(this, &UActionsLogWidget::AddActionToLog);
+}
+
+void UActionsLogWidget::Reset_Implementation()
+{
 }
 
 void UActionsLogWidget::AddActionToLog(const FString Name, const float Value)

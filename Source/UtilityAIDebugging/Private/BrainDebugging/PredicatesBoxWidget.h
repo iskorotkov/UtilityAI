@@ -26,6 +26,9 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	UDataRowWidget* AddDataRow();
 
+	UFUNCTION(BlueprintNativeEvent)
+	void Reset();
+
 private:
 	UPROPERTY(EditAnywhere)
 	FText SuccessStatus;
