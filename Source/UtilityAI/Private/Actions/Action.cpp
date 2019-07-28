@@ -24,7 +24,7 @@ float UAction::Evaluate(const TScriptInterface<IAgent>& Agent)
 	return Result;
 }
 
-void UAction::Run_Implementation(const TScriptInterface<IAgent>& Agent) const
+void UAction::Run_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	OnRun.Broadcast(GetName());
 }

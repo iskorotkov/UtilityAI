@@ -15,7 +15,7 @@ class UTILITYAI_API UBehaviorTreeAction : public UAction
 	GENERATED_BODY()
 
 public:
-	void Run_Implementation(const TScriptInterface<IAgent>& Agent) const override;
+	void Run_Implementation(const TScriptInterface<IAgent>& Agent) override;
 
 private:
 	UPROPERTY(EditAnywhere)

@@ -3,7 +3,7 @@
 #include "BehaviorTreeAction.h"
 #include "Agent.h"
 
-void UBehaviorTreeAction::Run_Implementation(const TScriptInterface<IAgent>& Agent) const
+void UBehaviorTreeAction::Run_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	Agent->RunBehavior(Behavior);
 }
