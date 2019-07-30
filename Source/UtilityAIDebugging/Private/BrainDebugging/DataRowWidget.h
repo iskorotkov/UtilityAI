@@ -32,4 +32,7 @@ private:
 
 	UPROPERTY()
 	UTextBlock* ValueWidget;
+
+	// TODO: add properties as "default text" and "default value" so they could be changed from property editor
+	// TODO: add "reset value" method
 };
