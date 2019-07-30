@@ -106,7 +106,6 @@ TArray<UPredicate*> UUtilityAIStatics::GetPredicates(UBrainAsset* Brain)
 		const auto& Conditions = Action->GetConditions();
 		for (const auto& Condition : Conditions)
 		{
-			// TODO: Some nasty bug here : why do condition and predicate need IAgent instance?
 			Condition.GetPredicate()->GetPredicatesRecursively(Predicates);
 		}
 	}
