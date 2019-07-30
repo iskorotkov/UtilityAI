@@ -11,6 +11,11 @@ void UBrainInfoWidget::SetBrain(UBrainAsset* Brain)
 	}
 }
 
+void UBrainInfoWidget::Reset_Implementation()
+{
+
+}
+
 void UBrainInfoWidget::ReactOnActionSelected(const FString Name, const float Value)
 {
 	OnActionSelected(Name, Value);

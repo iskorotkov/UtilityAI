@@ -23,6 +23,9 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnActionSelected(const FString& Name, float Value);
 
+	UFUNCTION(BlueprintNativeEvent)
+	void Reset();
+
 private:
 	UFUNCTION()
 	void ReactOnActionSelected(FString Name, float Value);
