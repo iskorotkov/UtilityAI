@@ -16,14 +16,16 @@ void UBrainDebuggingWidgetImpl::SelectActor()
 		if (Selection->Num() == 1)
 		{
 			SelectedActor = Selection->GetTop<AActor>();
-			check(SelectedActor);
-			if (const auto BrainComponent = SelectedActor->FindComponentByClass<UUtilityAIBrainComponent>())
+			if (SelectedActor && !SelectedActor->IsPendingKillPending())
 			{
-				ExtractComponentInfo(BrainComponent);
-			}
-			else
-			{
-				// TODO: log error: actor has no attached brain component
+				if (const auto BrainComponent = SelectedActor->FindComponentByClass<UUtilityAIBrainComponent>())
+				{
+					ExtractComponentInfo(BrainComponent);
+				}
+				else
+				{
+					// TODO: log error: actor has no attached brain component
+				}
 			}
 		}
 		else
@@ -40,6 +42,10 @@ TArray<FString> UBrainDebuggingWidgetImpl::GetBrainOptions() const
 
 void UBrainDebuggingWidgetImpl::SelectBrain(const FString SelectedItem)
 {
+	if (!SelectedActor || SelectedActor->IsPendingKillPending())
+	{
+		return;
+	}
 	if (SelectedItem.IsEmpty())
 	{
 		return;
