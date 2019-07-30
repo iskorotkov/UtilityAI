@@ -40,6 +40,10 @@ TArray<FString> UBrainDebuggingWidgetImpl::GetBrainOptions() const
 
 void UBrainDebuggingWidgetImpl::SelectBrain(const FString SelectedItem)
 {
+	if (SelectedItem.IsEmpty())
+	{
+		return;
+	}
 	const auto Index = ActorBrainsNames.IndexOfByKey(SelectedItem);
 	if (ActorBrains.IsValidIndex(Index))
 	{
