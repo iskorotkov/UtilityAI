@@ -3,6 +3,7 @@
 #include "ActionsLogWidget.h"
 #include "BrainAsset.h"
 #include "CommonWidgets/DataRowWidget.h"
+#include "Statics/ObjectNamesStatics.h"
 
 void UActionsLogWidget::SetBrain(UBrainAsset* Brain)
 {
@@ -39,7 +40,8 @@ void UActionsLogWidget::AddActionToLog(const FString Name, const float Value)
 	LastAction = Name;
 	auto DataRow = AddDataRow();
 	check(DataRow);
-	DataRow->SetName(FText::FromString(Name));
+	const auto PrettyName = UObjectNamesStatics::StripObjectName(Name);
+	DataRow->SetName(FText::FromString(PrettyName));
 	DataRow->SetValue(FText::AsNumber(Value));
 }
 

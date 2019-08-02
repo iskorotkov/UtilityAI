@@ -5,6 +5,7 @@
 #include "CommonWidgets/DataRowWidget.h"
 #include "UtilityAIStatics.h"
 #include "Predicate.h"
+#include "Statics/ObjectNamesStatics.h"
 
 UPredicatesBoxWidget::UPredicatesBoxWidget(const FObjectInitializer& ObjectInitializer)
 {
@@ -20,8 +21,9 @@ void UPredicatesBoxWidget::SetBrain(UBrainAsset* Brain)
 	{
 		auto DataRow = AddDataRow();
 		const auto Name = Predicate->GetName();
+		const auto PrettyName = UObjectNamesStatics::StripObjectName(Name);
 		check(DataRow);
-		DataRow->SetName(FText::FromString(Name));
+		DataRow->SetName(FText::FromString(PrettyName));
 		DataRows.Add(Name, DataRow);
 		Predicate->OnEvaluated.AddDynamic(this, &UPredicatesBoxWidget::UpdateRow);
 	}

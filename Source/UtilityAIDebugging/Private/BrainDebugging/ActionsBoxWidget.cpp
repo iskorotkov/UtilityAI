@@ -4,6 +4,7 @@
 #include "BrainAsset.h"
 #include "Action.h"
 #include "CommonWidgets/DataRowWidget.h"
+#include "Statics/ObjectNamesStatics.h"
 
 void UActionsBoxWidget::SetBrain(UBrainAsset* Brain)
 {
@@ -12,11 +13,12 @@ void UActionsBoxWidget::SetBrain(UBrainAsset* Brain)
 	const auto& Actions = Brain->GetActions();
 	for (const auto Action : Actions)
 	{
-		const auto ActionName = Action->GetName();
+		const auto Name = Action->GetName();
+		const auto PrettyName = UObjectNamesStatics::StripObjectName(Name);
 		auto DataRow = AddDataRow();
 		check(DataRow);
-		DataRows.Add(ActionName, DataRow);
-		DataRow->SetName(FText::FromString(ActionName));
+		DataRows.Add(Name, DataRow);
+		DataRow->SetName(FText::FromString(PrettyName));
 	}
 }
 
