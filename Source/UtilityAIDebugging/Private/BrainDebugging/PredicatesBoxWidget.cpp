@@ -6,7 +6,7 @@
 #include "UtilityAIStatics.h"
 #include "Predicate.h"
 
-UPredicatesBoxWidget::UPredicatesBoxWidget(const FObjectInitializer& ObjectInitializer) : UUserWidget(ObjectInitializer)
+UPredicatesBoxWidget::UPredicatesBoxWidget(const FObjectInitializer& ObjectInitializer)
 {
 	SuccessStatus = FText::FromString("Succeeded");
 	FailureStatus = FText::FromString("Failed");
@@ -14,8 +14,7 @@ UPredicatesBoxWidget::UPredicatesBoxWidget(const FObjectInitializer& ObjectIniti
 
 void UPredicatesBoxWidget::SetBrain(UBrainAsset* Brain)
 {
-	check(Brain);
-	Reset();
+	Super::SetBrain(Brain);
 	const auto Predicates = UUtilityAIStatics::GetPredicates(Brain);
 	for (const auto Predicate : Predicates)
 	{
@@ -31,10 +30,18 @@ void UPredicatesBoxWidget::SetBrain(UBrainAsset* Brain)
 void UPredicatesBoxWidget::Reset_Implementation()
 {
 	DataRows.Empty();
+	if (const auto Brain = GetAssignedBrain())
+	{
+		const auto Predicates = UUtilityAIStatics::GetPredicates(Brain);
+		for (const auto Predicate : Predicates)
+		{
+			Predicate->OnEvaluated.RemoveDynamic(this, &UPredicatesBoxWidget::UpdateRow);
+		}
+	}
+	Super::Reset_Implementation();
 }
 
 void UPredicatesBoxWidget::UpdateRow(const FString Name, const bool Result)
 {
-	// TODO: replace constants with properties
 	DataRows[Name]->SetValue(Result ? SuccessStatus : FailureStatus);
 }

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
+#include "BrainDebuggingSection.h"
 #include "PredicatesBoxWidget.generated.h"
 
 class UBrainAsset;
@@ -12,22 +12,20 @@ class UDataRowWidget;
  * 
  */
 UCLASS()
-class UPredicatesBoxWidget : public UUserWidget
+class UPredicatesBoxWidget : public UBrainDebuggingSection
 {
 	GENERATED_BODY()
 
 public:
 	UPredicatesBoxWidget(const FObjectInitializer& ObjectInitializer);
 
-	UFUNCTION(BlueprintCallable)
-	void SetBrain(UBrainAsset* Brain);
+	void SetBrain(UBrainAsset* Brain) override;
 
 protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	UDataRowWidget* AddDataRow();
 
-	UFUNCTION(BlueprintNativeEvent)
-	void Reset();
+	void Reset_Implementation() override;
 
 private:
 	UPROPERTY(EditAnywhere)

@@ -6,13 +6,17 @@
 
 void UActionsLogWidget::SetBrain(UBrainAsset* Brain)
 {
-	check(Brain);
-	Reset();
+	Super::SetBrain(Brain);
 	Brain->OnActionSelected.AddDynamic(this, &UActionsLogWidget::AddActionToLog);
 }
 
 void UActionsLogWidget::Reset_Implementation()
 {
+	if (const auto Brain = GetAssignedBrain())
+	{
+		Brain->OnActionSelected.RemoveDynamic(this, &UActionsLogWidget::AddActionToLog);
+	}
+	Super::Reset_Implementation();
 }
 
 void UActionsLogWidget::AddActionToLog(const FString Name, const float Value)

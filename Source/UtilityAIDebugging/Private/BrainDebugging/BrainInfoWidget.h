@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
+#include "BrainDebuggingSection.h"
 #include "BrainInfoWidget.generated.h"
 
 class UBrainAsset;
@@ -11,20 +11,18 @@ class UBrainAsset;
  * 
  */
 UCLASS()
-class UBrainInfoWidget : public UUserWidget
+class UBrainInfoWidget : public UBrainDebuggingSection
 {
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable)
-	void SetBrain(UBrainAsset* Brain);
+	void SetBrain(UBrainAsset* Brain) override;
 
 protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnActionSelected(const FString& Name, float Value);
 
-	UFUNCTION(BlueprintNativeEvent)
-	void Reset();
+	void Reset_Implementation() override;
 
 private:
 	UFUNCTION()
