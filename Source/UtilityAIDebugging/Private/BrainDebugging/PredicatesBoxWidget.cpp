@@ -2,7 +2,7 @@
 
 #include "PredicatesBoxWidget.h"
 #include "BrainAsset.h"
-#include "DataRowWidget.h"
+#include "CommonWidgets/DataRowWidget.h"
 #include "UtilityAIStatics.h"
 #include "Predicate.h"
 

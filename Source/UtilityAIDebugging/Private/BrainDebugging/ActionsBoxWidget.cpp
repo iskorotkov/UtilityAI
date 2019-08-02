@@ -2,8 +2,8 @@
 
 #include "ActionsBoxWidget.h"
 #include "BrainAsset.h"
-#include "DataRowWidget.h"
 #include "Action.h"
+#include "CommonWidgets/DataRowWidget.h"
 
 void UActionsBoxWidget::SetBrain(UBrainAsset* Brain)
 {

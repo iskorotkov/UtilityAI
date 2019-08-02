@@ -2,7 +2,7 @@
 
 #include "ActionsLogWidget.h"
 #include "BrainAsset.h"
-#include "DataRowWidget.h"
+#include "CommonWidgets/DataRowWidget.h"
 
 void UActionsLogWidget::SetBrain(UBrainAsset* Brain)
 {
