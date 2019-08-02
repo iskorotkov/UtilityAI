@@ -7,6 +7,7 @@
 #include "UtilityAIStatics.h"
 #include "BrainAsset.h"
 #include "ComboBoxString.h"
+#include "Statics/ObjectNamesStatics.h"
 
 void UBrainDebuggingWidgetImpl::SelectActor()
 {
@@ -84,7 +85,8 @@ void UBrainDebuggingWidgetImpl::ExtractComponentInfo(UUtilityAIBrainComponent* c
 	ActorBrainsNames.Empty();
 	for (const auto Brain : ActorBrains)
 	{
-		// TODO: in which format to show brain name?
-		ActorBrainsNames.Add(Brain->GetPathName(BrainComponent));
+		const auto Name = Brain->GetPathName(BrainComponent);
+		const auto PrettyName = UObjectNamesStatics::StripNestedObjectName(Brain, BrainComponent);
+		ActorBrainsNames.Add(PrettyName);
 	}
 }
