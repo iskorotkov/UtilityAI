@@ -106,7 +106,7 @@ TArray<UPredicate*> UUtilityAIStatics::GetPredicates(UBrainAsset* Brain)
 		const auto& Conditions = Action->GetConditions();
 		for (const auto& Condition : Conditions)
 		{
-			Condition.GetPredicate()->GetPredicatesRecursively(Predicates);
+			Condition.GetPredicateIfCreated()->GetPredicatesRecursively(Predicates);
 		}
 	}
 	return Predicates.Array();
@@ -115,14 +115,14 @@ TArray<UPredicate*> UUtilityAIStatics::GetPredicates(UBrainAsset* Brain)
 TArray<UPredicate*> UUtilityAIStatics::GetPredicatesRecursively(UBrainAsset* Brain)
 {
 	check(Brain);
-	const auto& Actions = GetActionsRecursively(Brain);
+	const auto Actions = GetActionsRecursively(Brain);
 	UExpression::FPredicatesContainer Predicates;
 	for (const auto Action : Actions)
 	{
 		const auto& Conditions = Action->GetConditions();
 		for (const auto& Condition : Conditions)
 		{
-			Condition.GetPredicate()->GetPredicatesRecursively(Predicates);
+			Condition.GetPredicateIfCreated()->GetPredicatesRecursively(Predicates);
 		}
 	}
 	return Predicates.Array();
