@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class UtilityAI : ModuleRules
+public class UtilityAIDebugging : ModuleRules
 {
-	public UtilityAI(ReadOnlyTargetRules Target) : base(Target)
+	public UtilityAIDebugging(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
@@ -13,6 +13,7 @@ public class UtilityAI : ModuleRules
 			{
 				"Core",
                 "AIModule",
+                "UtilityAI",
 			}
 			);
 			
@@ -23,6 +24,9 @@ public class UtilityAI : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+                "UnrealEd",
+                "UMG",
+                "Blutility",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

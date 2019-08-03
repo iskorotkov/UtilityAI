@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "SubclassOf.h"
+#include "StrongObjectPtr.h"
 #include "Condition.generated.h"
 
 class UPredicate;
@@ -17,15 +18,15 @@ struct UTILITYAI_API FCondition
 	GENERATED_BODY()
 
 public:
-	float Evaluate(const TScriptInterface<IAgent>& Agent);
+	float Evaluate(const TScriptInterface<IAgent>& Agent, UObject* OuterAction);
 
 	FString GetName() const;
 
-	UPredicate* GetPredicate(const TScriptInterface<IAgent>& Agent) const;
+	UPredicate* GetPredicate(UObject* Outer);
+	UPredicate* GetPredicateIfCreated() const;
 
 private:
-	UPROPERTY()
-	mutable UPredicate* Predicate = nullptr;
+	TStrongObjectPtr<UPredicate> Predicate;
 
 	UPROPERTY(EditAnywhere)
 	FString Name;
@@ -39,5 +40,5 @@ private:
 	UPROPERTY(EditAnywhere)
 	float FailureValue = 0.0f;
 
-	void EnsurePredicateIsCreated(const TScriptInterface<IAgent>& Agent) const;
+	void EnsurePredicateIsCreated(UObject* Outer);
 };

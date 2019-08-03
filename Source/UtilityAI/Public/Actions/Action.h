@@ -32,8 +32,8 @@ public:
 	float Evaluate(const TScriptInterface<IAgent>& Agent);
 
 	UFUNCTION(BlueprintNativeEvent)
-	void Run(const TScriptInterface<IAgent>& Agent) const;
-	virtual void Run_Implementation(const TScriptInterface<IAgent>& Agent) const;
+	void Run(const TScriptInterface<IAgent>& Agent);
+	virtual void Run_Implementation(const TScriptInterface<IAgent>& Agent);
 
 	UFUNCTION(BlueprintCallable)
 	bool IgnoreIfCalledTwice() const;
