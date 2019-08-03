@@ -18,18 +18,15 @@ struct UTILITYAI_API FCondition
 	GENERATED_BODY()
 
 public:
-	FCondition();
-	
-	float Evaluate(const TScriptInterface<IAgent>& Agent);
+	float Evaluate(const TScriptInterface<IAgent>& Agent, UObject* OuterAction);
 
 	FString GetName() const;
 
-	UPredicate* GetPredicate();
+	UPredicate* GetPredicate(UObject* Outer);
 	UPredicate* GetPredicateIfCreated() const;
 
 private:
-	UPROPERTY()
-	UPredicate* Predicate;
+	TStrongObjectPtr<UPredicate> Predicate;
 
 	UPROPERTY(EditAnywhere)
 	FString Name;
@@ -43,6 +40,5 @@ private:
 	UPROPERTY(EditAnywhere)
 	float FailureValue = 0.0f;
 
-	UObject* GetPredicateOuter() const;
-	void EnsurePredicateIsCreated();
+	void EnsurePredicateIsCreated(UObject* Outer);
 };

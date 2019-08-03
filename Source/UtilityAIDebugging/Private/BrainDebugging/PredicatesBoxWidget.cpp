@@ -19,13 +19,16 @@ void UPredicatesBoxWidget::SetBrain(UBrainAsset* Brain)
 	const auto Predicates = UUtilityAIStatics::GetPredicates(Brain);
 	for (const auto Predicate : Predicates)
 	{
-		auto DataRow = AddDataRow();
 		const auto Name = Predicate->GetName();
-		const auto PrettyName = UObjectNamesStatics::StripObjectName(Name);
-		check(DataRow);
-		DataRow->SetName(FText::FromString(PrettyName));
-		DataRows.Add(Name, DataRow);
-		Predicate->OnEvaluated.AddDynamic(this, &UPredicatesBoxWidget::UpdateRow);
+		if (!DataRows.Contains(Name))
+		{
+			const auto PrettyName = UObjectNamesStatics::StripObjectName(Name);
+			auto DataRow = AddDataRow();
+			check(DataRow);
+			DataRow->SetName(FText::FromString(PrettyName));
+			DataRows.Add(Name, DataRow);
+			Predicate->OnEvaluated.AddDynamic(this, &UPredicatesBoxWidget::UpdateRow);
+		}
 	}
 }
 

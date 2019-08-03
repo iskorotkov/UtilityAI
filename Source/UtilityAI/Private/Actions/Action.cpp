@@ -15,7 +15,7 @@ float UAction::Evaluate(const TScriptInterface<IAgent>& Agent)
 	auto Result = UUtilityAIConstants::MinActionRating();
 	for (auto& Condition : Conditions)
 	{
-		const auto Value = Condition.Evaluate(Agent);
+		const auto Value = Condition.Evaluate(Agent, this);
 		OnConditionEvaluated.Broadcast(Condition.GetName(), Value);
 		Result += Value;
 	}

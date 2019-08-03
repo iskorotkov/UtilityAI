@@ -4,28 +4,20 @@
 #include "Agent.h"
 #include "Predicate.h"
 
-UObject* FCondition::GetPredicateOuter() const
+void FCondition::EnsurePredicateIsCreated(UObject* Outer)
 {
-	return Cast<UObject>(GetTransientPackage());
-}
-
-void FCondition::EnsurePredicateIsCreated()
-{
-	if (Predicate == nullptr)
+	check(Outer);
+	if (!Predicate.IsValid())
 	{
-		Predicate = NewObject<UPredicate>(GetPredicateOuter(), PredicateClass);
+		Predicate.Reset(NewObject<UPredicate>(Outer, PredicateClass));
 	}
+	check(Predicate.IsValid());
 }
 
-FCondition::FCondition()
+float FCondition::Evaluate(const TScriptInterface<IAgent>& Agent, UObject* OuterAction)
 {
-	Predicate = nullptr;
-}
-
-float FCondition::Evaluate(const TScriptInterface<IAgent>& Agent)
-{
-	EnsurePredicateIsCreated();
-	return Predicate && Predicate->Evaluate(Agent) ? SuccessValue : FailureValue;
+	EnsurePredicateIsCreated(OuterAction);
+	return Predicate->Evaluate(Agent) ? SuccessValue : FailureValue;
 }
 
 FString FCondition::GetName() const
@@ -33,13 +25,13 @@ FString FCondition::GetName() const
 	return Name;
 }
 
-UPredicate* FCondition::GetPredicate()
+UPredicate* FCondition::GetPredicate(UObject* Outer)
 {
-	EnsurePredicateIsCreated();
-	return Predicate;
+	EnsurePredicateIsCreated(Outer);
+	return Predicate.Get();
 }
 
 UPredicate* FCondition::GetPredicateIfCreated() const
 {
-	return Predicate;
+	return Predicate.Get();
 }
