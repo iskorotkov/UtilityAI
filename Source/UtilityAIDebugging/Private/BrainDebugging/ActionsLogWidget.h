@@ -42,7 +42,7 @@ protected:
 
 private:
 	bool bIsLoggingEnabled = true;
-	bool bIsIgnoreRepeatingEnabled = false;
+	bool bIsIgnoreRepeatingEnabled = true;
 
 	FString LastAction;
 };
