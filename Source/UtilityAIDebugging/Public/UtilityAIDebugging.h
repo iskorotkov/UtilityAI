@@ -11,3 +11,5 @@ public:
 	void StartupModule() override;
 	void ShutdownModule() override;
 };
+
+DECLARE_LOG_CATEGORY_EXTERN(UtilityAI_Debugging, Log, All)

@@ -8,6 +8,7 @@
 #include "BrainAsset.h"
 #include "ComboBoxString.h"
 #include "Statics/ObjectNamesStatics.h"
+#include "UtilityAIDebugging.h"
 
 void UBrainDebuggingWidgetImpl::SelectActor()
 {
@@ -25,13 +26,13 @@ void UBrainDebuggingWidgetImpl::SelectActor()
 				}
 				else
 				{
-					// TODO: log error: actor has no attached brain component
+					UE_LOG(UtilityAI_Debugging, Warning, TEXT("Actor has no attached brain component"));
 				}
 			}
 		}
 		else
 		{
-			// TODO: log error: no actors or too many actors selected
+			UE_LOG(UtilityAI_Debugging, Warning, TEXT("No actors or too many actors selected"));
 		}
 	}
 }

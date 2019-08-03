@@ -18,3 +18,5 @@ void FUtilityAIDebuggingModule::ShutdownModule()
 #undef LOCTEXT_NAMESPACE
 	
 IMPLEMENT_MODULE(FUtilityAIDebuggingModule, UtilityAIDebugging)
+
+DEFINE_LOG_CATEGORY(UtilityAI_Debugging)
