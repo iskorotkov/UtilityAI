@@ -4,6 +4,7 @@
 #include "Agent.h"
 #include "Condition.h"
 #include "UtilityAIConstants.h"
+#include "Value.h"
 
 UAction::UAction()
 {
@@ -15,9 +16,12 @@ float UAction::Evaluate(const TScriptInterface<IAgent>& Agent)
 	auto Result = UUtilityAIConstants::MinActionRating();
 	for (auto& Condition : Conditions)
 	{
-		const auto Value = Condition.Evaluate(Agent, this);
-		OnConditionEvaluated.Broadcast(Condition.GetName(), Value);
-		Result += Value;
+		Result += Condition.Evaluate(Agent, this);
+	}
+	InstantiateValueClasses();
+	for (auto Value : Values)
+	{
+		Result += Value->Evaluate(Agent);
 	}
 	Result = FMath::Clamp(Result, UUtilityAIConstants::MinActionRating(), UUtilityAIConstants::MaxActionRating());
 	OnEvaluated.Broadcast(GetName(), Result);
@@ -37,4 +41,12 @@ bool UAction::IgnoreIfCalledTwice() const
 const TArray<FCondition>& UAction::GetConditions() const
 {
 	return Conditions;
+}
+
+void UAction::InstantiateValueClasses()
+{
+	for (const auto ValueClass : ValueClasses)
+	{
+		Values.Add(NewObject<UValue>(this, ValueClass));
+	}
 }
