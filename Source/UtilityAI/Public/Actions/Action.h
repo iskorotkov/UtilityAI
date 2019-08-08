@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Condition.h"
+#include "StrongObjectPtr.h"
 #include "Action.generated.h"
 
+class UValue;
 class IAgent;
 /**
  * 
@@ -17,7 +19,6 @@ class UTILITYAI_API UAction : public UObject
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FActionSignature, FString, ActionName, float, Value);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FActionRunSignature, FString, ActionName);
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FConditionSignature, FString, ConditionName, float, Value);
 
 public:
 	UAction();
@@ -25,8 +26,6 @@ public:
 	FActionSignature OnEvaluated;
 
 	FActionRunSignature OnRun;
-
-	FConditionSignature OnConditionEvaluated;
 
 	UFUNCTION(BlueprintCallable)
 	float Evaluate(const TScriptInterface<IAgent>& Agent);
@@ -50,4 +49,11 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	TArray<FCondition> Conditions;
+
+	UPROPERTY(EditDefaultsOnly)
+	TArray<TSubclassOf<UValue>> ValueClasses;
+
+	TArray<TStrongObjectPtr<UValue>> Values;
+
+	void InstantiateValueClasses();
 };
