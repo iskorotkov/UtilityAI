@@ -13,7 +13,7 @@ UAction::UAction()
 
 float UAction::Evaluate(const TScriptInterface<IAgent>& Agent)
 {
-	auto Result = UUtilityAIConstants::MinActionRating();
+	auto Result = BaseValue;
 	for (auto& Condition : Conditions)
 	{
 		Result += Condition.Evaluate(Agent, this);
@@ -21,6 +21,7 @@ float UAction::Evaluate(const TScriptInterface<IAgent>& Agent)
 	InstantiateValueClasses();
 	for (auto Value : Values)
 	{
+		check(Value.IsValid());
 		Result += Value->Evaluate(Agent);
 	}
 	Result = FMath::Clamp(Result, UUtilityAIConstants::MinActionRating(), UUtilityAIConstants::MaxActionRating());
@@ -45,8 +46,12 @@ const TArray<FCondition>& UAction::GetConditions() const
 
 void UAction::InstantiateValueClasses()
 {
+	if (Values.Num() > 0)
+	{
+		return;
+	}
 	for (const auto ValueClass : ValueClasses)
 	{
-		Values.Add(NewObject<UValue>(this, ValueClass));
+		Values.Emplace(NewObject<UValue>(this, ValueClass));
 	}
 }

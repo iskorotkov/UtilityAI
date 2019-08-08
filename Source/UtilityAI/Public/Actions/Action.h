@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Condition.h"
+#include "StrongObjectPtr.h"
 #include "Action.generated.h"
 
 class UValue;
@@ -49,10 +50,10 @@ private:
 	UPROPERTY(EditAnywhere)
 	TArray<FCondition> Conditions;
 
-	UPROPERTY(EditDefaultsOnly, meta = (DisplayName = "Values"))
+	UPROPERTY(EditDefaultsOnly)
 	TArray<TSubclassOf<UValue>> ValueClasses;
 
-	TArray<UValue*> Values;
+	TArray<TStrongObjectPtr<UValue>> Values;
 
 	void InstantiateValueClasses();
 };
