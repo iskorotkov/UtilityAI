@@ -16,14 +16,11 @@ class UTILITYAI_API UCurveValue : public UValue
 	GENERATED_BODY()
 
 public:
-	float Evaluate_Implementation(const TScriptInterface<IAgent>& Agent) override;
+	float GetValue_Implementation(const TScriptInterface<IAgent>& Agent) override;
 
 private:
 	UPROPERTY(EditAnywhere)
 	UCurveFloat* Curve;
-
-	UPROPERTY(EditAnywhere)
-	float Multiplier = 1.f;
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UValue> SourceClass;

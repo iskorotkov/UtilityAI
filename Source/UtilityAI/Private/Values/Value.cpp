@@ -3,7 +3,12 @@
 #include "Value.h"
 #include "Agent.h"
 
-float UValue::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
+float UValue::Evaluate(const TScriptInterface<IAgent>& Agent)
+{
+	return Multiplier * GetValue(Agent);
+}
+
+float UValue::GetValue_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	return 0.f;
 }

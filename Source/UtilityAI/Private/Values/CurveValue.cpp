@@ -3,7 +3,7 @@
 #include "CurveValue.h"
 #include "Curves/CurveFloat.h"
 
-float UCurveValue::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent)
+float UCurveValue::GetValue_Implementation(const TScriptInterface<IAgent>& Agent)
 {
 	check(Curve);
 	if (!Source)
@@ -12,5 +12,5 @@ float UCurveValue::Evaluate_Implementation(const TScriptInterface<IAgent>& Agent
 		check(Source);
 	}
 	const auto Value = Source->Evaluate(Agent);
-	return Curve->GetFloatValue(Value) * Multiplier;
+	return Curve->GetFloatValue(Value);
 }

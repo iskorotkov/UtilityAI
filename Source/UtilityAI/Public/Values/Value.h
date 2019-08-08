@@ -16,6 +16,14 @@ class UTILITYAI_API UValue : public UObject
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	UFUNCTION(BlueprintCallable)
 	float Evaluate(const TScriptInterface<IAgent>& Agent);
+
+protected:
+	UFUNCTION(BlueprintNativeEvent)
+	float GetValue(const TScriptInterface<IAgent>& Agent);
+
+private:
+	UPROPERTY(EditAnywhere)
+	float Multiplier = 1.f;
 };
