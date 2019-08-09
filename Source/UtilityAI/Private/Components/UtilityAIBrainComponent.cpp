@@ -16,7 +16,7 @@ void UUtilityAIBrainComponent::Act_Implementation() const
 	if (const auto Action = Asset->SelectAction(Agent))
 	{
 		OnActionRun.Broadcast(Action->GetName());
-		Action->Run(Agent);
+		Action->Execute(Agent);
 	}
 	OnAfterAct.Broadcast();
 }

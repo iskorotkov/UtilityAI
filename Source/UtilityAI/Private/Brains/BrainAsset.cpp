@@ -102,7 +102,7 @@ void UBrainAsset::ExecutePreActions(const TScriptInterface<IAgent>& Agent) const
 {
 	for (const auto Action : PreActions)
 	{
-		Action->Run(Agent);
+		Action->Execute(Agent);
 	}
 }
 
@@ -110,7 +110,7 @@ void UBrainAsset::ExecutePostActions(const TScriptInterface<IAgent>& Agent) cons
 {
 	for (const auto Action : PostActions)
 	{
-		Action->Run(Agent);
+		Action->Execute(Agent);
 	}
 }
 

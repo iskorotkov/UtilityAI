@@ -11,6 +11,12 @@ UAction::UAction()
 	BaseValue = UUtilityAIConstants::MinActionRating();
 }
 
+void UAction::Execute(const TScriptInterface<IAgent>& Agent)
+{
+	OnRun.Broadcast(GetName());
+	Run(Agent);
+}
+
 float UAction::Evaluate(const TScriptInterface<IAgent>& Agent)
 {
 	auto Result = BaseValue;
@@ -31,7 +37,6 @@ float UAction::Evaluate(const TScriptInterface<IAgent>& Agent)
 
 void UAction::Run_Implementation(const TScriptInterface<IAgent>& Agent)
 {
-	OnRun.Broadcast(GetName());
 }
 
 bool UAction::IgnoreIfCalledTwice() const

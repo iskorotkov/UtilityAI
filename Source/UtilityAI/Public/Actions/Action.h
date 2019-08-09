@@ -28,17 +28,21 @@ public:
 	FActionRunSignature OnRun;
 
 	UFUNCTION(BlueprintCallable)
-	float Evaluate(const TScriptInterface<IAgent>& Agent);
+	void Execute(const TScriptInterface<IAgent>& Agent);
 
-	UFUNCTION(BlueprintNativeEvent)
-	void Run(const TScriptInterface<IAgent>& Agent);
-	virtual void Run_Implementation(const TScriptInterface<IAgent>& Agent);
+	UFUNCTION(BlueprintCallable)
+	float Evaluate(const TScriptInterface<IAgent>& Agent);
 
 	UFUNCTION(BlueprintCallable)
 	bool IgnoreIfCalledTwice() const;
 
 	UFUNCTION(BlueprintCallable)
 	const TArray<FCondition>& GetConditions() const;
+
+protected:
+	UFUNCTION(BlueprintNativeEvent)
+	void Run(const TScriptInterface<IAgent>& Agent);
+	virtual void Run_Implementation(const TScriptInterface<IAgent>& Agent);
 
 private:
 	UPROPERTY(EditAnywhere, AdvancedDisplay)

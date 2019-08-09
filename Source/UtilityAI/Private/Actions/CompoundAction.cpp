@@ -27,6 +27,6 @@ void UCompoundAction::RunActions(const TScriptInterface<IAgent>& Agent)
 	for (const auto Action : Actions)
 	{
 		check(Action.IsValid());
-		Action->Run(Agent);
+		Action->Execute(Agent);
 	}
 }

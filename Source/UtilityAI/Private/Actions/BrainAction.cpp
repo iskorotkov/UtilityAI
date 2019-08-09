@@ -14,7 +14,7 @@ void UBrainAction::Run_Implementation(const TScriptInterface<IAgent>& Agent)
 	}
 	if (const auto Action = GetBrain()->SelectAction(Agent))
 	{
-		Action->Run(Agent);
+		Action->Execute(Agent);
 	}
 }
 
