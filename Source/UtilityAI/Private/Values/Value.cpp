@@ -5,7 +5,9 @@
 
 float UValue::Evaluate(const TScriptInterface<IAgent>& Agent)
 {
-	return Multiplier * GetValue(Agent);
+	const auto Value = Multiplier * GetValue(Agent);
+	OnEvaluated.Broadcast(GetName(), Value);
+	return Value;
 }
 
 float UValue::GetValue_Implementation(const TScriptInterface<IAgent>& Agent)
