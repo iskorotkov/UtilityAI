@@ -53,6 +53,10 @@ const TArray<int>& UMultiOperation::Arguments() const
 
 void UMultiOperation::Init(const TArray<UExpression*>& O, const TArray<int>& A)
 {
+	if (bHasExpectedNumberOfArgs)
+	{
+		checkf(A.Num() == ExpectedNumberOfArgs, TEXT("The number of provided arguments do not match the expected number of arguments"));
+	}
 	Ops = O;
 	Args = A;
 }

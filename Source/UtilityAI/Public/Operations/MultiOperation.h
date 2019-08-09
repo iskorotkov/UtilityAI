@@ -49,6 +49,12 @@ protected:
 	const TArray<int>& Arguments() const;
 
 private:
+	UPROPERTY(EditDefaultsOnly)
+	bool bHasExpectedNumberOfArgs = false;
+	
+	UPROPERTY(EditDefaultsOnly, meta = (EditCondition = "bHasExpectedNumberOfArgs"))
+	int ExpectedNumberOfArgs = 4;
+	
 	UPROPERTY()
 	TArray<UExpression*> Ops;
 
