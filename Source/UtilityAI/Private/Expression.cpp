@@ -5,7 +5,6 @@
 
 bool UExpression::ExpressionValue_Implementation(const TScriptInterface<IAgent>& Agent)
 {
-	UE_LOG(UtilityAI, Error, TEXT("Expression %s has no overriden evaluate behavior"), *GetName());
 	return false;
 }
 
@@ -16,5 +15,4 @@ bool UExpression::Evaluate(const TScriptInterface<IAgent>& Agent)
 
 void UExpression::GetPredicatesRecursively(FPredicatesContainerRef Predicates)
 {
-	UE_LOG(UtilityAI, Error, TEXT("Expression %s does not provide any way to access underlying predicates"), *GetName());
 }
