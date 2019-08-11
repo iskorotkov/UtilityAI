@@ -49,6 +49,17 @@ const TArray<FCondition>& UAction::GetConditions() const
 	return Conditions;
 }
 
+// TODO: Return by const ref
+TArray<UValue*> UAction::GetValues() const
+{
+	TArray<UValue*> Results;
+	for (const auto ValuePtr : Values)
+	{
+		Results.Add(ValuePtr.Get());
+	}
+	return Results;
+}
+
 void UAction::InstantiateValueClasses()
 {
 	if (Values.Num() > 0)

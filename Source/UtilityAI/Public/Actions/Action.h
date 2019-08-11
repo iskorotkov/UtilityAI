@@ -39,6 +39,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	const TArray<FCondition>& GetConditions() const;
 
+	UFUNCTION(BlueprintCallable)
+	TArray<UValue*> GetValues() const;
+
 protected:
 	UFUNCTION(BlueprintNativeEvent)
 	void Run(const TScriptInterface<IAgent>& Agent);
