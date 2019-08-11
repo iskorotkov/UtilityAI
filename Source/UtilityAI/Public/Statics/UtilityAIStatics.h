@@ -52,7 +52,7 @@ public:
 	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
 	static AActor* AsActor(const TScriptInterface<IAgent>& Agent);
 
-	// Access to predicates, actions and brains
+	// Access to predicates, actions, values and brains
 
 	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
 	static TArray<UBrainAsset*> GetBrainsRecursively(UBrainAsset* Brain);
@@ -65,6 +65,12 @@ public:
 
 	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
 	static TArray<UPredicate*> GetPredicatesRecursively(UBrainAsset* Brain);
+
+	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
+	static TArray<UValue*> GetValues(UBrainAsset* Brain);
+
+	UFUNCTION(Category = "Utility AI|Statics", BlueprintPure)
+	static TArray<UValue*> GetValuesRecursively(UBrainAsset* Brain);
 
 private:
 	static UObject* GetOuter();
