@@ -15,7 +15,11 @@ class UTILITYAI_API UValue : public UObject
 {
 	GENERATED_BODY()
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FValueSignature, FString, Name, float, Value);
+
 public:
+	FValueSignature OnEvaluated;
+	
 	UFUNCTION(BlueprintCallable)
 	float Evaluate(const TScriptInterface<IAgent>& Agent);
 

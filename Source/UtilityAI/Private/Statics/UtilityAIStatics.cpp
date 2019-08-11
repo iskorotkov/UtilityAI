@@ -128,6 +128,28 @@ TArray<UPredicate*> UUtilityAIStatics::GetPredicatesRecursively(UBrainAsset* Bra
 	return Predicates.Array();
 }
 
+TArray<UValue*> UUtilityAIStatics::GetValues(UBrainAsset* Brain)
+{
+	const auto Actions = Brain->GetActions();
+	TArray<UValue*> Results;
+	for (const auto Action : Actions)
+	{
+		Results.Append(Action->GetValues());
+	}
+	return Results;
+}
+
+TArray<UValue*> UUtilityAIStatics::GetValuesRecursively(UBrainAsset* Brain)
+{
+	const auto Actions = GetActionsRecursively(Brain);
+	TArray<UValue*> Results;
+	for (const auto Action : Actions)
+	{
+		Results.Append(Action->GetValues());
+	}
+	return Results;
+}
+
 void UUtilityAIStatics::GetActions_Internal(TArray<UAction*>& Actions, UAction* Action)
 {
 	if (const auto BrainAction = Cast<UBrainAction>(Action))
