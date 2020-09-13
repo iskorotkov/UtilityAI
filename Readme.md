@@ -1,3 +1,3 @@
 # UtilityAI Plugin
 
-Developed with Unreal Engine 4
+Utility AI plugin for complex AI decision-making
